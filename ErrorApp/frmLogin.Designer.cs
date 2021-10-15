@@ -1,6 +1,6 @@
 ﻿namespace ErrorApp
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ucLogin = new ErrorApp.ucLogin();
             this.SuspendLayout();
             // 
-            // Form1
+            // ucLogin
+            // 
+            this.ucLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucLogin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ucLogin.Location = new System.Drawing.Point(290, 0);
+            this.ucLogin.Name = "ucLogin";
+            this.ucLogin.Size = new System.Drawing.Size(537, 631);
+            this.ucLogin.TabIndex = 0;
+            // 
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(28)))));
+            this.ClientSize = new System.Drawing.Size(827, 631);
+            this.Controls.Add(this.ucLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "frmLogin";
+            this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private ucLogin ucLogin;
     }
 }
-
