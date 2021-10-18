@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
 
-namespace BLL
+namespace DataAccessLayer
 {
-    public class BusinessLogicLayer
+    public class Solution
     {
-        DataAccessLayer dal = new DataAccessLayer();
     }
 }
