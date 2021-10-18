@@ -27,13 +27,6 @@ namespace ErrorApp
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-
-        }
-
-        public void loadStudent()
-        {
-            btnAdmin.Hide();
-            btnLanguage.Hide();
         }
 
         private void pnlTitleBar_MouseDown(object sender, MouseEventArgs e)

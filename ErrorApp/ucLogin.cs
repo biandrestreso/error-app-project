@@ -41,10 +41,5 @@ namespace ErrorApp
         {
             txtPassword.UseSystemPasswordChar = true;
         }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
