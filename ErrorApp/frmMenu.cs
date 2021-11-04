@@ -27,6 +27,7 @@ namespace ErrorApp
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+
         }
 
         private void pnlTitleBar_MouseDown(object sender, MouseEventArgs e)
@@ -41,6 +42,21 @@ namespace ErrorApp
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnError_Click(object sender, EventArgs e)
+        {
+            ucError.BringToFront();
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            ucAdmin.BringToFront();
+        }
+
+        private void btnModuleTopic_Click(object sender, EventArgs e)
+        {
+            ucModuleTopic.BringToFront();
         }
     }
 }

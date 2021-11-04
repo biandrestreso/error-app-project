@@ -32,14 +32,12 @@ namespace ErrorApp
             txtPassword.Focus();
         }
 
-        private void btnShowPass_MouseDown(object sender, MouseEventArgs e)
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = false;
-        }
-
-        private void btnShowPass_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtPassword.UseSystemPasswordChar = true;
+            if (chkShowPass.Checked)
+                txtPassword.UseSystemPasswordChar = false;
+            else if (!chkShowPass.Checked)
+                txtPassword.UseSystemPasswordChar = true;
         }
     }
 }

@@ -35,7 +35,7 @@
             this.pnlEmail = new System.Windows.Forms.Panel();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnShowPass = new System.Windows.Forms.Button();
+            this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.pnlPassword.SuspendLayout();
             this.pnlEmail.SuspendLayout();
             this.SuspendLayout();
@@ -118,29 +118,34 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(254)))));
-            this.btnLogin.Location = new System.Drawing.Point(247, 238);
+            this.btnLogin.Location = new System.Drawing.Point(247, 252);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(112, 36);
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Sign In";
             this.btnLogin.UseVisualStyleBackColor = false;
             // 
-            // btnShowPass
+            // chkShowPass
             // 
-            this.btnShowPass.Location = new System.Drawing.Point(365, 195);
-            this.btnShowPass.Name = "btnShowPass";
-            this.btnShowPass.Size = new System.Drawing.Size(22, 23);
-            this.btnShowPass.TabIndex = 8;
-            this.btnShowPass.UseVisualStyleBackColor = true;
-            this.btnShowPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPass_MouseDown);
-            this.btnShowPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPass_MouseUp);
+            this.chkShowPass.AutoSize = true;
+            this.chkShowPass.FlatAppearance.BorderSize = 0;
+            this.chkShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkShowPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.chkShowPass.Location = new System.Drawing.Point(96, 230);
+            this.chkShowPass.Name = "chkShowPass";
+            this.chkShowPass.Size = new System.Drawing.Size(111, 19);
+            this.chkShowPass.TabIndex = 8;
+            this.chkShowPass.Text = "Show Password";
+            this.chkShowPass.UseVisualStyleBackColor = true;
+            this.chkShowPass.CheckedChanged += new System.EventHandler(this.chkShowPass_CheckedChanged);
             // 
             // ucLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.Controls.Add(this.btnShowPass);
+            this.Controls.Add(this.chkShowPass);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.pnlEmail);
             this.Controls.Add(this.pnlPassword);
@@ -164,8 +169,8 @@
         private System.Windows.Forms.Panel pnlPassword;
         private System.Windows.Forms.Panel pnlEmail;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnShowPass;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.CheckBox chkShowPass;
     }
 }
