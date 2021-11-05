@@ -21,6 +21,7 @@ namespace ErrorApp
 
         BusinessLogicLayer bll = new BusinessLogicLayer();
         public static DataTable dtLogin;
+        bool selectDone = false;
 
         string action;
 
@@ -31,8 +32,6 @@ namespace ErrorApp
 
             resetUC();
             refresh();
-
-            dgvError.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvError.ClearSelection();
         }
@@ -47,8 +46,38 @@ namespace ErrorApp
 
         public void refresh()
         {
+            selectDone = false;
 
-            dgvError.DataSource = bll.GetError();
+            DataTable dtMerge = new DataTable();
+
+            UserModule userModule = new UserModule(int.Parse(dtLogin.Rows[0]["UserID"].ToString()));
+            DataTable dtModule = bll.GetUserModule(userModule);
+
+            if (int.Parse(dtLogin.Rows[0]["RoleID"].ToString()) == 1)
+            {
+                dgvError.DataSource = bll.GetError();
+
+                cmbTopic.DataSource = bll.GetTopicModule();
+                cmbTopic.ValueMember = "Module Topic ID";
+                cmbTopic.DisplayMember = "Topic and Module";
+            }
+            else
+            {
+                foreach (DataRow drow in dtModule.Rows)
+                {
+                    Module module = new Module(int.Parse(drow["Module ID"].ToString()), null);
+                    DataTable dtTemp = bll.GetErrorByModule(module);
+
+                    dtMerge.Merge(dtTemp);
+                }
+
+                User user = new User(int.Parse(dtLogin.Rows[0]["UserID"].ToString()));
+                cmbTopic.DataSource = bll.GetTopicModuleByUser(user);
+                cmbTopic.ValueMember = "Module Topic ID";
+                cmbTopic.DisplayMember = "Topic and Module";
+
+                dgvError.DataSource = dtMerge;
+            }
 
             cmbProgLang.DataSource = bll.GetProgLang();
             cmbProgLang.ValueMember = "ProgLangID";
@@ -58,7 +87,7 @@ namespace ErrorApp
 
             DataRow dr = dt.NewRow();
             dr["ProgLangID"] = 0;
-            dr["ProgLangDesc"] = "SELECT";
+            dr["ProgLangDesc"] = "None";
 
             dt.Rows.InsertAt(dr, 0);
 
@@ -66,11 +95,19 @@ namespace ErrorApp
             cmbViewProgLang.ValueMember = "ProgLangID";
             cmbViewProgLang.DisplayMember = "ProgLangDesc";
 
-            cmbTopic.DataSource = bll.GetTopicModule();
-            cmbTopic.ValueMember = "Module Topic ID";
-            cmbTopic.DisplayMember = "Topic and Module";
+            
+
+            selectDone = true;
+            setColumn();
         }
 
+        private void setColumn()
+        {
+            if (dgvError.Rows.Count > 0)
+            {
+                dgvError.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+        }
 
         private void btnError_Click(object sender, EventArgs e)
         {
@@ -130,26 +167,44 @@ namespace ErrorApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            switch (action)
+            bool invalid = false;
+
+            if (string.IsNullOrWhiteSpace(txtDesc.Text))
             {
-                case "errorAdd":
-                    pnlErrorDialog.Hide();
+                errorError.SetError(txtDesc, "Please enter an error description");
+                invalid = true;
+            }
+            else
+            {
+                errorError.SetError(txtDesc, "");
+                invalid = false;
+            }
 
-                    Error insertError = new Error(txtDesc.Text, "Pending", int.Parse(dtLogin.Rows[0]["UserID"].ToString()), int.Parse(cmbProgLang.SelectedValue.ToString()), int.Parse(cmbTopic.SelectedValue.ToString()));
-                    bll.InsertError(insertError);
-                    break;
-                case "errorUpdate":
-                    pnlErrorDialog.Hide();
+            if (!invalid)
+            {
+                switch (action)
+                {
+                    case "errorAdd":
+                        pnlErrorDialog.Hide();
 
-                    Error updateError = new Error(int.Parse(dgvError.SelectedRows[0].Cells["Error ID"].Value.ToString()), txtDesc.Text, int.Parse(cmbProgLang.SelectedValue.ToString()), int.Parse(cmbTopic.SelectedValue.ToString()));
-                    bll.UpdateError(updateError);
-                    break;
-                case "solutionAdd":
-                    pnlErrorDialog.Hide();
+                        Error insertError = new Error(txtDesc.Text, "Pending", DateTime.Today ,int.Parse(dtLogin.Rows[0]["UserID"].ToString()), int.Parse(cmbProgLang.SelectedValue.ToString()), int.Parse(cmbTopic.SelectedValue.ToString()));
+                        bll.InsertError(insertError);
+                        break;
+                    case "errorUpdate":
+                        pnlErrorDialog.Hide();
 
-                    SolutionError solutionError = new SolutionError(txtDesc.Text, int.Parse(dtLogin.Rows[0]["UserID"].ToString()), int.Parse(dgvError.SelectedRows[0].Cells["Error ID"].Value.ToString()), DateTime.Today);
-                    bll.InsertSolutionError(solutionError);
-                    break;
+                        Error updateError = new Error(int.Parse(dgvError.SelectedRows[0].Cells["Error ID"].Value.ToString()), txtDesc.Text, int.Parse(cmbProgLang.SelectedValue.ToString()), int.Parse(cmbTopic.SelectedValue.ToString()));
+                        bll.UpdateError(updateError);
+                        break;
+                    case "solutionAdd":
+                        pnlErrorDialog.Hide();
+
+                        SolutionError solutionError = new SolutionError(txtDesc.Text, int.Parse(dtLogin.Rows[0]["UserID"].ToString()), int.Parse(dgvError.SelectedRows[0].Cells["Error ID"].Value.ToString()), DateTime.Today);
+                        bll.InsertSolutionError(solutionError);
+                        break;
+                }
+
+                pnlErrorDialog.Hide();
             }
 
             refresh();
@@ -195,7 +250,10 @@ namespace ErrorApp
                     {
                         pnlUpdate.Show();
                         pnlDelete.Show();
-                        pnlSolution.Show();
+                        if (dgvError.SelectedRows[0].Cells["Status"].Value.ToString() == "Pending")
+                            pnlSolution.Show();
+                        else
+                            pnlSolution.Hide();
                     }
                     else if (dgvError.SelectedRows.Count > 1)
                     {
@@ -215,7 +273,8 @@ namespace ErrorApp
                     {
                         pnlUpdate.Hide();
                         pnlDelete.Show();
-                        pnlSolution.Show();
+                        if (dgvError.SelectedRows[0].Cells["Status"].Value.ToString() == "Pending")
+                            pnlSolution.Show();
                     }
                     else if (dgvError.SelectedRows.Count > 1)
                     {
@@ -262,10 +321,25 @@ namespace ErrorApp
 
         private void cmbViewProgLang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbViewProgLang.Text != "SELECT")
-                (dgvError.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Programming Language] LIKE '%{0}%'", cmbViewProgLang.Text);
-            else if (cmbViewProgLang.Text == "SELECT")
-                (dgvError.DataSource as DataTable).DefaultView.RowFilter = "";
+            if (selectDone)
+            {
+                if (cmbViewProgLang.Text != "None")
+                    (dgvError.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Programming Language] LIKE '%{0}%'", cmbViewProgLang.Text);
+                else if (cmbViewProgLang.Text == "None")
+                    (dgvError.DataSource as DataTable).DefaultView.RowFilter = "";
+            }
+        }
+
+        private void btnFilterDate_Click(object sender, EventArgs e)
+        {
+            Error error = new Error(dtpFrom.Value.Date, dtpTo.Value.Date);
+            dgvError.DataSource = bll.GetErrorByDate(error);
+            setColumn();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }

@@ -42,10 +42,11 @@
             this.pnlTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ucSolution = new ErrorApp.ucSolution();
             this.ucError = new ErrorApp.ucError();
             this.ucAdmin = new ErrorApp.ucAdmin();
             this.ucModuleTopic = new ErrorApp.ucModuleTopic();
-            this.ucSolution = new ErrorApp.ucSolution();
+            this.ucDashboard = new ErrorApp.ucDashboard();
             this.pnlSidebar.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.pnlTitleBar.SuspendLayout();
@@ -53,7 +54,7 @@
             // 
             // pnlSidebar
             // 
-            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.pnlSidebar.Controls.Add(this.btnAdmin);
             this.pnlSidebar.Controls.Add(this.btnModuleTopic);
             this.pnlSidebar.Controls.Add(this.btnSolution);
@@ -64,113 +65,120 @@
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(170, 610);
+            this.pnlSidebar.Size = new System.Drawing.Size(170, 705);
             this.pnlSidebar.TabIndex = 0;
             // 
             // btnAdmin
             // 
+            this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdmin.FlatAppearance.BorderSize = 0;
             this.btnAdmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnAdmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnAdmin.ForeColor = System.Drawing.Color.White;
             this.btnAdmin.Location = new System.Drawing.Point(0, 300);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(170, 50);
             this.btnAdmin.TabIndex = 15;
             this.btnAdmin.Text = "Admin";
-            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnModuleTopic
             // 
+            this.btnModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnModuleTopic.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnModuleTopic.FlatAppearance.BorderSize = 0;
             this.btnModuleTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnModuleTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModuleTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModuleTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnModuleTopic.ForeColor = System.Drawing.Color.White;
             this.btnModuleTopic.Location = new System.Drawing.Point(0, 250);
             this.btnModuleTopic.Name = "btnModuleTopic";
             this.btnModuleTopic.Size = new System.Drawing.Size(170, 50);
             this.btnModuleTopic.TabIndex = 13;
             this.btnModuleTopic.Text = "Module && Topic";
-            this.btnModuleTopic.UseVisualStyleBackColor = true;
+            this.btnModuleTopic.UseVisualStyleBackColor = false;
             this.btnModuleTopic.Click += new System.EventHandler(this.btnModuleTopic_Click);
             // 
             // btnSolution
             // 
+            this.btnSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnSolution.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSolution.FlatAppearance.BorderSize = 0;
             this.btnSolution.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnSolution.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSolution.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnSolution.ForeColor = System.Drawing.Color.White;
             this.btnSolution.Location = new System.Drawing.Point(0, 200);
             this.btnSolution.Name = "btnSolution";
             this.btnSolution.Size = new System.Drawing.Size(170, 50);
             this.btnSolution.TabIndex = 11;
             this.btnSolution.Text = "Solutions";
-            this.btnSolution.UseVisualStyleBackColor = true;
+            this.btnSolution.UseVisualStyleBackColor = false;
             this.btnSolution.Click += new System.EventHandler(this.btnSolution_Click);
             // 
             // btnError
             // 
+            this.btnError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnError.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnError.FlatAppearance.BorderSize = 0;
             this.btnError.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnError.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnError.ForeColor = System.Drawing.Color.White;
             this.btnError.Location = new System.Drawing.Point(0, 150);
             this.btnError.Name = "btnError";
             this.btnError.Size = new System.Drawing.Size(170, 50);
             this.btnError.TabIndex = 10;
             this.btnError.Text = "Errors";
-            this.btnError.UseVisualStyleBackColor = true;
+            this.btnError.UseVisualStyleBackColor = false;
             this.btnError.Click += new System.EventHandler(this.btnError_Click);
             // 
             // btnDashboard
             // 
+            this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Location = new System.Drawing.Point(0, 100);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(170, 50);
             this.btnDashboard.TabIndex = 9;
             this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // btnSignOut
             // 
+            this.btnSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnSignOut.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSignOut.FlatAppearance.BorderSize = 0;
             this.btnSignOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnSignOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSignOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnSignOut.Location = new System.Drawing.Point(0, 560);
+            this.btnSignOut.ForeColor = System.Drawing.Color.White;
+            this.btnSignOut.Location = new System.Drawing.Point(0, 655);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(170, 50);
             this.btnSignOut.TabIndex = 8;
             this.btnSignOut.Text = "Sign Out";
-            this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.UseVisualStyleBackColor = false;
             this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // pnlUser
             // 
+            this.pnlUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.pnlUser.Controls.Add(this.lblRole);
             this.pnlUser.Controls.Add(this.lblEmail);
             this.pnlUser.Controls.Add(this.lblName);
@@ -182,33 +190,34 @@
             // 
             // lblRole
             // 
-            this.lblRole.AutoSize = true;
-            this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.lblRole.Location = new System.Drawing.Point(68, 69);
+            this.lblRole.ForeColor = System.Drawing.Color.White;
+            this.lblRole.Location = new System.Drawing.Point(7, 74);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(29, 13);
+            this.lblRole.Size = new System.Drawing.Size(158, 13);
             this.lblRole.TabIndex = 1;
             this.lblRole.Text = "Role";
+            this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblEmail
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.lblEmail.Location = new System.Drawing.Point(68, 40);
+            this.lblEmail.ForeColor = System.Drawing.Color.White;
+            this.lblEmail.Location = new System.Drawing.Point(6, 56);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.Size = new System.Drawing.Size(158, 13);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email";
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.lblName.Location = new System.Drawing.Point(68, 17);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(6, 25);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.Size = new System.Drawing.Size(158, 13);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlTitleBar
             // 
@@ -254,12 +263,20 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // ucSolution
+            // 
+            this.ucSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucSolution.Location = new System.Drawing.Point(170, 40);
+            this.ucSolution.Name = "ucSolution";
+            this.ucSolution.Size = new System.Drawing.Size(958, 665);
+            this.ucSolution.TabIndex = 5;
+            // 
             // ucError
             // 
             this.ucError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ucError.Location = new System.Drawing.Point(170, 40);
             this.ucError.Name = "ucError";
-            this.ucError.Size = new System.Drawing.Size(958, 570);
+            this.ucError.Size = new System.Drawing.Size(958, 665);
             this.ucError.TabIndex = 2;
             // 
             // ucAdmin
@@ -267,7 +284,7 @@
             this.ucAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ucAdmin.Location = new System.Drawing.Point(170, 40);
             this.ucAdmin.Name = "ucAdmin";
-            this.ucAdmin.Size = new System.Drawing.Size(958, 570);
+            this.ucAdmin.Size = new System.Drawing.Size(958, 665);
             this.ucAdmin.TabIndex = 3;
             // 
             // ucModuleTopic
@@ -275,36 +292,36 @@
             this.ucModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ucModuleTopic.Location = new System.Drawing.Point(170, 40);
             this.ucModuleTopic.Name = "ucModuleTopic";
-            this.ucModuleTopic.Size = new System.Drawing.Size(958, 570);
+            this.ucModuleTopic.Size = new System.Drawing.Size(958, 665);
             this.ucModuleTopic.TabIndex = 4;
             // 
-            // ucSolution
+            // ucDashboard
             // 
-            this.ucSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ucSolution.Location = new System.Drawing.Point(170, 40);
-            this.ucSolution.Name = "ucSolution";
-            this.ucSolution.Size = new System.Drawing.Size(958, 570);
-            this.ucSolution.TabIndex = 5;
+            this.ucDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucDashboard.Location = new System.Drawing.Point(170, 40);
+            this.ucDashboard.Name = "ucDashboard";
+            this.ucDashboard.Size = new System.Drawing.Size(958, 665);
+            this.ucDashboard.TabIndex = 6;
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(1128, 610);
-            this.Controls.Add(this.ucSolution);
-            this.Controls.Add(this.ucError);
-            this.Controls.Add(this.ucAdmin);
+            this.ClientSize = new System.Drawing.Size(1128, 705);
             this.Controls.Add(this.pnlTitleBar);
             this.Controls.Add(this.pnlSidebar);
+            this.Controls.Add(this.ucDashboard);
             this.Controls.Add(this.ucModuleTopic);
+            this.Controls.Add(this.ucError);
+            this.Controls.Add(this.ucAdmin);
+            this.Controls.Add(this.ucSolution);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMenu";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
-            this.pnlUser.PerformLayout();
             this.pnlTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -330,6 +347,7 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblName;
         private ucSolution ucSolution;
+        private ucDashboard ucDashboard;
     }
 }
 

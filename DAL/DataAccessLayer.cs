@@ -114,6 +114,17 @@ namespace DAL
             return dt;
         }
 
+        public DataTable GetTopicModuleByUser(User user)
+        {
+            dbCmd = new SqlCommand("sp_GetTopicModuleByUser", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@UserID", user.UserID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
         public DataTable GetModuleTopic()
         {
             dbCmd = new SqlCommand("sp_GetModuleTopic", dbConn);
@@ -138,6 +149,7 @@ namespace DAL
 
             dbCmd.Parameters.AddWithValue("@ErrorDesc", error.ErrorDesc);
             dbCmd.Parameters.AddWithValue("@ErrorStatus", error.ErrorStatus);
+            dbCmd.Parameters.AddWithValue("@ErrorDate", error.ErrorDate);
             dbCmd.Parameters.AddWithValue("@StudentID", error.StudentID);
             dbCmd.Parameters.AddWithValue("@ProgLangID", error.ProgLangID);
             dbCmd.Parameters.AddWithValue("@ModuleTopicID", error.ModuleTopicID);
@@ -547,7 +559,7 @@ namespace DAL
             dbCmd = new SqlCommand("sp_DeleteUser", dbConn);
             dbCmd.CommandType = CommandType.StoredProcedure;
 
-            dbCmd.Parameters.AddWithValue("@SolutionID", user.UserID);
+            dbCmd.Parameters.AddWithValue("@UserID", user.UserID);
 
             int x = dbCmd.ExecuteNonQuery();
             return x;
@@ -589,6 +601,134 @@ namespace DAL
 
             int x = dbCmd.ExecuteNonQuery();
             return x;
+        }
+
+        public DataTable GetSolutionByUser(User user)
+        {
+            dbCmd = new SqlCommand("sp_GetSolutionByUser", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@LecturerID", user.UserID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetErrorByUser(User user)
+        {
+            dbCmd = new SqlCommand("sp_GetErrorByUser", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@StudentID", user.UserID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetLeastAnswered()
+        {
+            dbCmd = new SqlCommand("sp_GetLeastAnswered", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetMostAnswered()
+        {
+            dbCmd = new SqlCommand("sp_GetMostAnswered", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable CountPending()
+        {
+            dbCmd = new SqlCommand("sp_CountPending", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable CountSolved()
+        {
+            dbCmd = new SqlCommand("sp_CountSolved", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable CountErrors()
+        {
+            dbCmd = new SqlCommand("sp_CountErrors", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable CountUsers()
+        {
+            dbCmd = new SqlCommand("sp_CountUsers", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetErrorByModule(Module module)
+        {
+            dbCmd = new SqlCommand("sp_GetErrorByModule", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@ModuleID", module.ModuleID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetSolutionByModule(Module module)
+        {
+            dbCmd = new SqlCommand("sp_GetSolutionByModule", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@ModuleID", module.ModuleID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetErrorByDate(Error error)
+        {
+            dbCmd = new SqlCommand("sp_GetErrorByDate", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@ErrorDateFrom", error.ErrorDateFrom);
+            dbCmd.Parameters.AddWithValue("@ErrorDateTo", error.ErrorDateTo);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetSolutionByDate(SolutionError solutionError)
+        {
+            dbCmd = new SqlCommand("sp_GetSolutionByDate", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@SolutionDateFrom", solutionError.SolutionDateFrom);
+            dbCmd.Parameters.AddWithValue("@SolutionDateTo", solutionError.SolutionDateTo);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
         }
     }
 }

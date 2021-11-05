@@ -37,6 +37,10 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lblHeading = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlEmail.SuspendLayout();
             this.pnlPassword.SuspendLayout();
@@ -45,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.chkShowPass);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.pnlEmail);
@@ -52,7 +57,7 @@
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.lblEmail);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(316, 0);
+            this.panel1.Location = new System.Drawing.Point(331, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(511, 631);
             this.panel1.TabIndex = 0;
@@ -158,12 +163,64 @@
             this.lblEmail.TabIndex = 9;
             this.lblEmail.Text = "EMAIL";
             // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(465, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(46, 40);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "✕";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.ForeColor = System.Drawing.Color.White;
+            this.lblHeading.Location = new System.Drawing.Point(12, 107);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(273, 37);
+            this.lblHeading.TabIndex = 2;
+            this.lblHeading.Text = "Error Application";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(26, 606);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(269, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Developed by: Biandré Streso (s221424660)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(16, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Error Management app";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(827, 631);
+            this.ClientSize = new System.Drawing.Size(842, 631);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
@@ -176,6 +233,7 @@
             this.pnlPassword.ResumeLayout(false);
             this.pnlPassword.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -190,5 +248,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblHeading;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -13,6 +13,8 @@ namespace DAL
         public int LecturerID { get; set; }
         public int ErrorID { get; set; }
         public DateTime SolutionDate { get; set; }
+        public DateTime SolutionDateFrom { get; set; }
+        public DateTime SolutionDateTo { get; set; }
 
         public SolutionError(string solutionDesc, int lecturerID, int errorID, DateTime solutionDate)
         {
@@ -36,6 +38,12 @@ namespace DAL
         {
             SolutionID = solutionID;
             SolutionDesc = solutionDesc;
+        }
+
+        public SolutionError(DateTime solutionDateFrom, DateTime solutionDateTo)
+        {
+            SolutionDateFrom = solutionDateFrom;
+            SolutionDateTo = solutionDateTo;
         }
     }
 }

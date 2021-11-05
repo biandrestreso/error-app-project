@@ -62,6 +62,11 @@ namespace BLL
             return dal.GetTopicModule();
         }
 
+        public DataTable GetTopicModuleByUser(User user)
+        {
+            return dal.GetTopicModuleByUser(user);
+        }
+
         public DataTable GetModuleTopic()
         {
             return dal.GetModuleTopic();
@@ -190,6 +195,66 @@ namespace BLL
         public int DeleteUserError(Error error)
         {
             return dal.DeleteUserError(error);
+        }
+
+        public DataTable GetSolutionByUser(User user)
+        {
+            return dal.GetSolutionByUser(user);
+        }
+
+        public DataTable GetErrorByUser(User user)
+        {
+            return dal.GetErrorByUser(user);
+        }
+
+        public DataTable GetLeastAnswered()
+        {
+            return dal.GetLeastAnswered();
+        }
+
+        public DataTable GetMostAnswered()
+        {
+            return dal.GetMostAnswered();
+        }
+
+        public DataTable CountPending()
+        {
+            return dal.CountPending();
+        }
+
+        public DataTable CountSolved()
+        {
+            return dal.CountSolved();
+        }
+
+        public DataTable CountErrors()
+        {
+            return dal.CountErrors();
+        }
+
+        public DataTable CountUsers()
+        {
+            return dal.CountUsers();
+        }
+
+        public DataTable GetErrorByModule(Module module)
+        {
+            return dal.GetErrorByModule(module);
+        }
+
+        public DataTable GetSolutionByModule(Module module)
+        {
+            return dal.GetSolutionByModule(module);
+        }
+
+        public DataTable GetErrorByDate(Error error)
+        {
+            return dal.GetErrorByDate(error);
+        }
+
+        public DataTable GetSolutionByDate(SolutionError solutionError)
+        {
+            return dal.GetSolutionByDate(solutionError);
         }
     }
 }

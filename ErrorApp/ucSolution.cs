@@ -20,19 +20,67 @@ namespace ErrorApp
         }
 
         BusinessLogicLayer bll = new BusinessLogicLayer();
+        public static DataTable dtLogin;
+        bool selectDone = false;
 
         private void ucSolution_Load(object sender, EventArgs e)
         {
+            frmLogin frmLogin = new frmLogin();
+            dtLogin = frmLogin.dtLogin;
+
             refresh();
             resetUC();
-
-            dgvSolution.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvSolution.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void refresh()
         {
-            dgvSolution.DataSource = bll.GetSolutionError();
+            selectDone = false;
+
+            DataTable dtMerge = new DataTable();
+
+            UserModule userModule = new UserModule(int.Parse(dtLogin.Rows[0]["UserID"].ToString()));
+            DataTable dtModule = bll.GetUserModule(userModule);
+
+            if (int.Parse(dtLogin.Rows[0]["RoleID"].ToString()) == 1)
+            {
+                dgvSolution.DataSource = bll.GetSolutionError();
+            }
+            else
+            {
+                foreach (DataRow drow in dtModule.Rows)
+                {
+                    Module module = new Module(int.Parse(drow["Module ID"].ToString()), null);
+                    DataTable dtTemp = bll.GetSolutionByModule(module);
+
+                    dtMerge.Merge(dtTemp);
+                }
+
+                dgvSolution.DataSource = dtMerge;
+            }
+
+            DataTable dt = bll.GetModule();
+
+            DataRow dr = dt.NewRow();
+            dr["Module ID"] = 0;
+            dr["Module"] = "None";
+
+            dt.Rows.InsertAt(dr, 0);
+
+            cmbModule.DataSource = dt;
+            cmbModule.ValueMember = "Module ID";
+            cmbModule.DisplayMember = "Module";
+
+            selectDone = true;
+            setColumn();
+        }
+
+        private void setColumn()
+        {
+            if (dgvSolution.Rows.Count > 0)
+            {
+                dgvSolution.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvSolution.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
 
         public void resetUC()
@@ -67,10 +115,27 @@ namespace ErrorApp
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            SolutionError solutionError = new SolutionError(int.Parse(dgvSolution.SelectedRows[0].Cells["Solution ID"].Value.ToString()), txtDesc.Text);
-            bll.UpdateSolution(solutionError);
+            bool invalid = false;
 
-            pnlSolutionDialog.Hide();
+            if (string.IsNullOrWhiteSpace(txtDesc.Text))
+            {
+                errorSolution.SetError(txtDesc, "Please enter a description");
+                invalid = true;
+            }
+            else
+            {
+                errorSolution.SetError(txtDesc, "");
+                invalid = false;
+            }
+
+            if (!invalid)
+            {
+                SolutionError solutionError = new SolutionError(int.Parse(dgvSolution.SelectedRows[0].Cells["Solution ID"].Value.ToString()), txtDesc.Text);
+                bll.UpdateSolution(solutionError);
+
+                pnlSolutionDialog.Hide();
+            }
+            
             refresh();
         }
 
@@ -81,16 +146,59 @@ namespace ErrorApp
 
         private void dgvSolution_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvSolution.SelectedRows.Count == 1)
+            if (dgvSolution.Rows.Count > 0)
             {
-                pnlUpdate.Show();
-                pnlDelete.Show();
+                if (dgvSolution.SelectedRows.Count == 1)
+                {
+                    pnlUpdate.Show();
+
+                    string lecturer = dtLogin.Rows[0]["Username"].ToString() + " " + dtLogin.Rows[0]["Surname"].ToString();
+                    if (dgvSolution.SelectedRows[0].Cells["Lecturer"].Value.ToString() == lecturer)
+                    {
+                        pnlDelete.Show();
+                    }
+                    else
+                        pnlDelete.Hide();
+                }
+                else
+                {
+                    pnlUpdate.Hide();
+                    pnlDelete.Hide();
+                }
             }
-            else
+        }
+
+        private void txtSearchError_TextChanged(object sender, EventArgs e)
+        {
+            (dgvSolution.DataSource as DataTable).DefaultView.RowFilter = string.Format("Error LIKE '%{0}%'", txtSearchError.Text);
+        }
+
+        private void txtSearchSolution_TextChanged(object sender, EventArgs e)
+        {
+            (dgvSolution.DataSource as DataTable).DefaultView.RowFilter = string.Format("Solution LIKE '%{0}%'", txtSearchSolution.Text);
+        }
+
+        private void cmbModule_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (selectDone)
             {
-                pnlUpdate.Hide();
-                pnlDelete.Hide();
+                if (cmbModule.Text != "None")
+                    (dgvSolution.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Module and Topic] LIKE '%{0}%'", cmbModule.Text);
+                else if (cmbModule.Text == "None")
+                    (dgvSolution.DataSource as DataTable).DefaultView.RowFilter = "";
             }
+        }
+
+        private void btnFilterDate_Click(object sender, EventArgs e)
+        {
+            SolutionError solutionError = new SolutionError(dtpFrom.Value.Date, dtpTo.Value.Date);
+            dgvSolution.DataSource = bll.GetSolutionByDate(solutionError);
+            setColumn();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }

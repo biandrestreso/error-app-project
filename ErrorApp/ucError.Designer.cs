@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnError = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlButtons = new System.Windows.Forms.Panel();
@@ -52,6 +53,15 @@
             this.btnSolution = new System.Windows.Forms.Button();
             this.cmbViewProgLang = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.errorError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lblFilterProgLang = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.btnFilterDate = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.lblFrom = new System.Windows.Forms.Label();
+            this.lbTo = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlDelete.SuspendLayout();
             this.pnlUpdate.SuspendLayout();
@@ -60,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvError)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlSolution.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorError)).BeginInit();
             this.SuspendLayout();
             // 
             // btnError
@@ -69,8 +80,8 @@
             this.btnError.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnError.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnError.Location = new System.Drawing.Point(16, 14);
+            this.btnError.ForeColor = System.Drawing.Color.White;
+            this.btnError.Location = new System.Drawing.Point(15, 12);
             this.btnError.Name = "btnError";
             this.btnError.Size = new System.Drawing.Size(106, 38);
             this.btnError.TabIndex = 2;
@@ -83,8 +94,8 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnUpdate.Location = new System.Drawing.Point(16, 14);
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(15, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 38);
             this.btnUpdate.TabIndex = 3;
@@ -97,9 +108,9 @@
             this.pnlButtons.Controls.Add(this.pnlDelete);
             this.pnlButtons.Controls.Add(this.pnlUpdate);
             this.pnlButtons.Controls.Add(this.pnlInsert);
-            this.pnlButtons.Location = new System.Drawing.Point(19, 15);
+            this.pnlButtons.Location = new System.Drawing.Point(19, 9);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(493, 63);
+            this.pnlButtons.Size = new System.Drawing.Size(426, 60);
             this.pnlButtons.TabIndex = 5;
             // 
             // pnlDelete
@@ -108,7 +119,7 @@
             this.pnlDelete.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlDelete.Location = new System.Drawing.Point(274, 0);
             this.pnlDelete.Name = "pnlDelete";
-            this.pnlDelete.Size = new System.Drawing.Size(137, 63);
+            this.pnlDelete.Size = new System.Drawing.Size(137, 60);
             this.pnlDelete.TabIndex = 3;
             // 
             // btnDelete
@@ -116,10 +127,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(66)))), ((int)(((byte)(69)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.btnDelete.Location = new System.Drawing.Point(21, 14);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(15, 12);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(92, 38);
+            this.btnDelete.Size = new System.Drawing.Size(105, 38);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete Error";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -131,7 +142,7 @@
             this.pnlUpdate.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlUpdate.Location = new System.Drawing.Point(137, 0);
             this.pnlUpdate.Name = "pnlUpdate";
-            this.pnlUpdate.Size = new System.Drawing.Size(137, 63);
+            this.pnlUpdate.Size = new System.Drawing.Size(137, 60);
             this.pnlUpdate.TabIndex = 1;
             // 
             // pnlInsert
@@ -140,7 +151,7 @@
             this.pnlInsert.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlInsert.Location = new System.Drawing.Point(0, 0);
             this.pnlInsert.Name = "pnlInsert";
-            this.pnlInsert.Size = new System.Drawing.Size(137, 63);
+            this.pnlInsert.Size = new System.Drawing.Size(137, 60);
             this.pnlInsert.TabIndex = 0;
             // 
             // pnlErrorDialog
@@ -156,9 +167,9 @@
             this.pnlErrorDialog.Controls.Add(this.lblSubHeading);
             this.pnlErrorDialog.Controls.Add(this.lblHeading);
             this.pnlErrorDialog.Controls.Add(this.btnSubmit);
-            this.pnlErrorDialog.Location = new System.Drawing.Point(293, 184);
+            this.pnlErrorDialog.Location = new System.Drawing.Point(269, 270);
             this.pnlErrorDialog.Name = "pnlErrorDialog";
-            this.pnlErrorDialog.Size = new System.Drawing.Size(395, 226);
+            this.pnlErrorDialog.Size = new System.Drawing.Size(420, 226);
             this.pnlErrorDialog.TabIndex = 1;
             // 
             // btnClose
@@ -169,7 +180,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(349, 0);
+            this.btnClose.Location = new System.Drawing.Point(374, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(46, 40);
             this.btnClose.TabIndex = 9;
@@ -189,6 +200,7 @@
             // 
             // cmbTopic
             // 
+            this.cmbTopic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTopic.FormattingEnabled = true;
             this.cmbTopic.Location = new System.Drawing.Point(196, 153);
             this.cmbTopic.Name = "cmbTopic";
@@ -217,6 +229,7 @@
             // 
             // cmbProgLang
             // 
+            this.cmbProgLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProgLang.FormattingEnabled = true;
             this.cmbProgLang.Location = new System.Drawing.Point(196, 126);
             this.cmbProgLang.Name = "cmbProgLang";
@@ -272,12 +285,12 @@
             this.dgvError.AllowUserToResizeRows = false;
             this.dgvError.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvError.Location = new System.Drawing.Point(19, 177);
+            this.dgvError.Location = new System.Drawing.Point(19, 134);
             this.dgvError.Name = "dgvError";
             this.dgvError.ReadOnly = true;
             this.dgvError.RowHeadersVisible = false;
             this.dgvError.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvError.Size = new System.Drawing.Size(861, 386);
+            this.dgvError.Size = new System.Drawing.Size(916, 512);
             this.dgvError.TabIndex = 6;
             this.dgvError.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvError_DataBindingComplete);
             this.dgvError.SelectionChanged += new System.EventHandler(this.dgvError_SelectionChanged);
@@ -285,9 +298,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pnlSolution);
-            this.panel1.Location = new System.Drawing.Point(19, 84);
+            this.panel1.Location = new System.Drawing.Point(19, 68);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(166, 63);
+            this.panel1.Size = new System.Drawing.Size(155, 60);
             this.panel1.TabIndex = 6;
             // 
             // pnlSolution
@@ -296,7 +309,7 @@
             this.pnlSolution.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSolution.Location = new System.Drawing.Point(0, 0);
             this.pnlSolution.Name = "pnlSolution";
-            this.pnlSolution.Size = new System.Drawing.Size(137, 63);
+            this.pnlSolution.Size = new System.Drawing.Size(137, 60);
             this.pnlSolution.TabIndex = 0;
             // 
             // btnSolution
@@ -306,7 +319,7 @@
             this.btnSolution.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnSolution.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSolution.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnSolution.ForeColor = System.Drawing.Color.White;
             this.btnSolution.Location = new System.Drawing.Point(16, 12);
             this.btnSolution.Name = "btnSolution";
             this.btnSolution.Size = new System.Drawing.Size(106, 38);
@@ -317,8 +330,9 @@
             // 
             // cmbViewProgLang
             // 
+            this.cmbViewProgLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbViewProgLang.FormattingEnabled = true;
-            this.cmbViewProgLang.Location = new System.Drawing.Point(670, 57);
+            this.cmbViewProgLang.Location = new System.Drawing.Point(725, 47);
             this.cmbViewProgLang.Name = "cmbViewProgLang";
             this.cmbViewProgLang.Size = new System.Drawing.Size(210, 21);
             this.cmbViewProgLang.TabIndex = 7;
@@ -326,17 +340,115 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(670, 15);
+            this.txtSearch.Location = new System.Drawing.Point(725, 21);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(210, 20);
             this.txtSearch.TabIndex = 8;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // errorError
+            // 
+            this.errorError.ContainerControl = this;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.ForeColor = System.Drawing.Color.White;
+            this.lblSearch.Location = new System.Drawing.Point(561, 24);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(71, 13);
+            this.lblSearch.TabIndex = 9;
+            this.lblSearch.Text = "Search Errors";
+            // 
+            // lblFilterProgLang
+            // 
+            this.lblFilterProgLang.AutoSize = true;
+            this.lblFilterProgLang.ForeColor = System.Drawing.Color.White;
+            this.lblFilterProgLang.Location = new System.Drawing.Point(561, 50);
+            this.lblFilterProgLang.Name = "lblFilterProgLang";
+            this.lblFilterProgLang.Size = new System.Drawing.Size(158, 13);
+            this.lblFilterProgLang.TabIndex = 11;
+            this.lblFilterProgLang.Text = "Filter by Programming Language";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Location = new System.Drawing.Point(725, 74);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(210, 20);
+            this.dtpTo.TabIndex = 12;
+            // 
+            // btnFilterDate
+            // 
+            this.btnFilterDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.btnFilterDate.FlatAppearance.BorderSize = 0;
+            this.btnFilterDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
+            this.btnFilterDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.btnFilterDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterDate.ForeColor = System.Drawing.Color.White;
+            this.btnFilterDate.Location = new System.Drawing.Point(706, 100);
+            this.btnFilterDate.Name = "btnFilterDate";
+            this.btnFilterDate.Size = new System.Drawing.Size(106, 23);
+            this.btnFilterDate.TabIndex = 3;
+            this.btnFilterDate.Text = "Filter Date";
+            this.btnFilterDate.UseVisualStyleBackColor = false;
+            this.btnFilterDate.Click += new System.EventHandler(this.btnFilterDate_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.Location = new System.Drawing.Point(594, 100);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(106, 23);
+            this.btnReset.TabIndex = 13;
+            this.btnReset.Text = "Reset Filter";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Location = new System.Drawing.Point(472, 74);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(210, 20);
+            this.dtpFrom.TabIndex = 14;
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.ForeColor = System.Drawing.Color.White;
+            this.lblFrom.Location = new System.Drawing.Point(437, 77);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(30, 13);
+            this.lblFrom.TabIndex = 15;
+            this.lblFrom.Text = "From";
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.ForeColor = System.Drawing.Color.White;
+            this.lbTo.Location = new System.Drawing.Point(700, 77);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(20, 13);
+            this.lbTo.TabIndex = 16;
+            this.lbTo.Text = "To";
             // 
             // ucError
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.Controls.Add(this.lbTo);
+            this.Controls.Add(this.lblFrom);
+            this.Controls.Add(this.dtpFrom);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnFilterDate);
+            this.Controls.Add(this.dtpTo);
+            this.Controls.Add(this.lblFilterProgLang);
+            this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbViewProgLang);
             this.Controls.Add(this.panel1);
@@ -344,7 +456,7 @@
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.dgvError);
             this.Name = "ucError";
-            this.Size = new System.Drawing.Size(911, 581);
+            this.Size = new System.Drawing.Size(958, 665);
             this.Load += new System.EventHandler(this.ucError_Load);
             this.pnlButtons.ResumeLayout(false);
             this.pnlDelete.ResumeLayout(false);
@@ -355,6 +467,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvError)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnlSolution.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +498,14 @@
         private System.Windows.Forms.Button btnSolution;
         private System.Windows.Forms.ComboBox cmbViewProgLang;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ErrorProvider errorError;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Label lblFilterProgLang;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnFilterDate;
+        private System.Windows.Forms.DateTimePicker dtpTo;
     }
 }

@@ -70,7 +70,8 @@ namespace ErrorApp
         }
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-
+            ucDashboard.BringToFront();
+            ucDashboard.refresh();
         }
 
         private void btnError_Click(object sender, EventArgs e)

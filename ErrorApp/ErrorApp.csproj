@@ -60,6 +60,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ucAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,13 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ucAdmin.resx">
       <DependentUpon>ucAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +143,22 @@
       <Project>{e4d3bc26-f155-49a0-8201-afa841a938bb}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\circle_purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle_lightBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cirlce_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle_darkBlue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

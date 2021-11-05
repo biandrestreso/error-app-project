@@ -43,6 +43,12 @@ namespace ErrorApp
             clbModules.DisplayMember = "Module";
 
             dgvUser.DataSource = bll.GetUser();
+
+            DataTable dt = bll.CountUsers();
+            if (dt.Rows.Count > 0)
+                lblTotalUsers.Text = dt.Rows[0][0].ToString();
+            else
+                lblTotalUsers.Text = "No Users";
         }
 
         public void resetUC()
@@ -58,6 +64,8 @@ namespace ErrorApp
             pnlUserDialog.Show();
             clbModules.Show();
 
+            lblAdminDialog.Text = "Add User";
+
             txtName.Clear();
             txtSurname.Clear();
             txtEmail.Clear();
@@ -72,6 +80,8 @@ namespace ErrorApp
 
             pnlUserDialog.Show();
             clbModules.Show();
+
+            lblAdminDialog.Text = "Update User";
 
             txtName.Text = dgvUser.SelectedRows[0].Cells["Name"].Value.ToString();
             txtSurname.Text = dgvUser.SelectedRows[0].Cells["Surname"].Value.ToString();
@@ -109,41 +119,120 @@ namespace ErrorApp
 
             User user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
             bll.DeleteUser(user);
+
+            refresh();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            switch (isUpdate)
+            bool invalid = false;
+            DataTable dt = (DataTable)dgvUser.DataSource;
+
+            foreach (DataRow dr in dt.Rows)
             {
-                case true:
-
-                    User updateUser = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()), txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(cmbRole.SelectedValue.ToString()));
-                    bll.UpdateUser(updateUser);
-                    break;
-                case false:
-                    if (cmbRole.SelectedValue.ToString() == "1")
-                    {
-                        User user = new User(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, 1);
-                        bll.InsertUser(user);
-                    }
-                    else
-                    {
-                        User user = new User(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(cmbRole.SelectedValue.ToString()));
-                        int id = bll.InsertUser(user);
-
-                        for (int i = 0; i < clbModules.CheckedItems.Count; i++)
-                        {
-                            DataRow dr = ((DataRowView)clbModules.CheckedItems[i]).Row;
-                            string value = (dr[this.clbModules.ValueMember]).ToString();
-                            UserModule userModule = new UserModule(id, int.Parse(value));
-                            bll.InsertUserModule(userModule);
-                        }
-                    }
-                    break;
+                if (txtEmail.Text.ToUpper() == dr["Email"].ToString().ToUpper())
+                {
+                    errorAdmin.SetError(txtEmail, "Please enter a new Email");
+                    invalid = true;
+                }
+                else if (txtName.Text.ToUpper() == dr["Name"].ToString().ToUpper() && txtSurname.Text.ToUpper() == dr["Surname"].ToString().ToUpper())
+                {
+                    errorAdmin.SetError(txtName, "This user already exists");
+                    errorAdmin.SetError(txtSurname, "This user already exists");
+                    invalid = true;
+                }
             }
 
-            refresh();
-            pnlUserDialog.Hide();
+
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                errorAdmin.SetError(txtName, "Please enter a name");
+                invalid = true;
+            }
+            else
+            {
+                errorAdmin.SetError(txtName, "");
+                invalid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtSurname.Text))
+            {
+                errorAdmin.SetError(txtSurname, "Please enter a surname");
+                invalid = true;
+            }
+            else
+            {
+                errorAdmin.SetError(txtSurname, "");
+                invalid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                errorAdmin.SetError(txtEmail, "Please enter an email");
+                invalid = true;
+            }
+            else
+            {
+                errorAdmin.SetError(txtEmail, "");
+                invalid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                errorAdmin.SetError(txtPassword, "Please enter a password");
+                invalid = true;
+            }
+            else
+            {
+                errorAdmin.SetError(txtPassword, "");
+                invalid = false;
+            }
+                
+            if (txtPassword.Text.Length < 8)
+            {
+                errorAdmin.SetError(txtPassword, "Password must be at least 8 characters in length");
+                invalid = true;
+            }
+            else
+            {
+                errorAdmin.SetError(txtPassword, "");
+                invalid = false;
+            }
+            
+            if (!invalid)
+            {
+                switch (isUpdate)
+                {
+                    case true:
+                        User updateUser = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()), txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(cmbRole.SelectedValue.ToString()));
+                        bll.UpdateUser(updateUser);
+                        break;
+                    case false:
+                        if (cmbRole.SelectedValue.ToString() == "1")
+                        {
+                            User user = new User(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, 1);
+                            bll.InsertUser(user);
+                        }
+                        else
+                        {
+                            User user = new User(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(cmbRole.SelectedValue.ToString()));
+                            int id = bll.InsertUser(user);
+
+                            for (int i = 0; i < clbModules.CheckedItems.Count; i++)
+                            {
+                                DataRow dr = ((DataRowView)clbModules.CheckedItems[i]).Row;
+                                string value = (dr[this.clbModules.ValueMember]).ToString();
+                                UserModule userModule = new UserModule(id, int.Parse(value));
+                                bll.InsertUserModule(userModule);
+                            }
+                        }
+                        break;
+                }
+
+                pnlUserDialog.Hide();
+                refresh();
+            }
+            importDone = false;
         }
 
         private void dgvUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvModule = new System.Windows.Forms.DataGridView();
             this.pnlModuleDialog = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.lblYear = new System.Windows.Forms.Label();
             this.cmbYear = new System.Windows.Forms.ComboBox();
             this.lblDesc = new System.Windows.Forms.Label();
@@ -45,8 +47,10 @@
             this.pnlInsertTopic = new System.Windows.Forms.Panel();
             this.btnAddTopic = new System.Windows.Forms.Button();
             this.pnlInsertModule = new System.Windows.Forms.Panel();
+            this.btnAddModule = new System.Windows.Forms.Button();
             this.pnlModuleTopic = new System.Windows.Forms.Panel();
             this.pnlModuleTopicDialog = new System.Windows.Forms.Panel();
+            this.btnCloseModuleTopic = new System.Windows.Forms.Button();
             this.cmbModule = new System.Windows.Forms.ComboBox();
             this.lblTopic = new System.Windows.Forms.Label();
             this.cmbTopic = new System.Windows.Forms.ComboBox();
@@ -65,13 +69,11 @@
             this.pnlBack = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvModuleTopic = new System.Windows.Forms.DataGridView();
-            this.btnAddModule = new System.Windows.Forms.Button();
             this.dgvTopic = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnModuleTopic = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnCloseModuleTopic = new System.Windows.Forms.Button();
+            this.errorModule = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).BeginInit();
             this.pnlModuleDialog.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -91,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorModule)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvModule
@@ -100,12 +103,12 @@
             this.dgvModule.AllowUserToResizeRows = false;
             this.dgvModule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvModule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModule.Location = new System.Drawing.Point(17, 172);
+            this.dgvModule.Location = new System.Drawing.Point(19, 134);
             this.dgvModule.Name = "dgvModule";
             this.dgvModule.ReadOnly = true;
             this.dgvModule.RowHeadersVisible = false;
             this.dgvModule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvModule.Size = new System.Drawing.Size(435, 382);
+            this.dgvModule.Size = new System.Drawing.Size(450, 515);
             this.dgvModule.TabIndex = 1;
             this.dgvModule.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvModule_DataBindingComplete);
             this.dgvModule.SelectionChanged += new System.EventHandler(this.dgvModule_SelectionChanged);
@@ -121,10 +124,26 @@
             this.pnlModuleDialog.Controls.Add(this.lblAddDesc);
             this.pnlModuleDialog.Controls.Add(this.lblModuleTopic);
             this.pnlModuleDialog.Controls.Add(this.btnSubmit);
-            this.pnlModuleDialog.Location = new System.Drawing.Point(261, 194);
+            this.pnlModuleDialog.Location = new System.Drawing.Point(276, 232);
             this.pnlModuleDialog.Name = "pnlModuleDialog";
             this.pnlModuleDialog.Size = new System.Drawing.Size(402, 207);
             this.pnlModuleDialog.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(356, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(46, 40);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "✕";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblYear
             // 
@@ -202,9 +221,9 @@
             this.panel2.Controls.Add(this.pnlUpdate);
             this.panel2.Controls.Add(this.pnlInsertTopic);
             this.panel2.Controls.Add(this.pnlInsertModule);
-            this.panel2.Location = new System.Drawing.Point(17, 21);
+            this.panel2.Location = new System.Drawing.Point(19, 9);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(602, 100);
+            this.panel2.Size = new System.Drawing.Size(585, 60);
             this.panel2.TabIndex = 6;
             // 
             // pnlDelete
@@ -213,7 +232,7 @@
             this.pnlDelete.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlDelete.Location = new System.Drawing.Point(411, 0);
             this.pnlDelete.Name = "pnlDelete";
-            this.pnlDelete.Size = new System.Drawing.Size(137, 100);
+            this.pnlDelete.Size = new System.Drawing.Size(137, 60);
             this.pnlDelete.TabIndex = 6;
             // 
             // btnDelete
@@ -221,10 +240,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(66)))), ((int)(((byte)(69)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.btnDelete.Location = new System.Drawing.Point(21, 29);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(15, 12);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(92, 38);
+            this.btnDelete.Size = new System.Drawing.Size(105, 38);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -236,7 +255,7 @@
             this.pnlUpdate.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlUpdate.Location = new System.Drawing.Point(274, 0);
             this.pnlUpdate.Name = "pnlUpdate";
-            this.pnlUpdate.Size = new System.Drawing.Size(137, 100);
+            this.pnlUpdate.Size = new System.Drawing.Size(137, 60);
             this.pnlUpdate.TabIndex = 5;
             // 
             // btnUpdate
@@ -244,8 +263,8 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnUpdate.Location = new System.Drawing.Point(17, 29);
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(15, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 38);
             this.btnUpdate.TabIndex = 3;
@@ -259,7 +278,7 @@
             this.pnlInsertTopic.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlInsertTopic.Location = new System.Drawing.Point(137, 0);
             this.pnlInsertTopic.Name = "pnlInsertTopic";
-            this.pnlInsertTopic.Size = new System.Drawing.Size(137, 100);
+            this.pnlInsertTopic.Size = new System.Drawing.Size(137, 60);
             this.pnlInsertTopic.TabIndex = 4;
             // 
             // btnAddTopic
@@ -269,8 +288,8 @@
             this.btnAddTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnAddTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnAddTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnAddTopic.Location = new System.Drawing.Point(15, 29);
+            this.btnAddTopic.ForeColor = System.Drawing.Color.White;
+            this.btnAddTopic.Location = new System.Drawing.Point(15, 12);
             this.btnAddTopic.Name = "btnAddTopic";
             this.btnAddTopic.Size = new System.Drawing.Size(106, 38);
             this.btnAddTopic.TabIndex = 2;
@@ -284,8 +303,24 @@
             this.pnlInsertModule.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlInsertModule.Location = new System.Drawing.Point(0, 0);
             this.pnlInsertModule.Name = "pnlInsertModule";
-            this.pnlInsertModule.Size = new System.Drawing.Size(137, 100);
+            this.pnlInsertModule.Size = new System.Drawing.Size(137, 60);
             this.pnlInsertModule.TabIndex = 0;
+            // 
+            // btnAddModule
+            // 
+            this.btnAddModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.btnAddModule.FlatAppearance.BorderSize = 0;
+            this.btnAddModule.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
+            this.btnAddModule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.btnAddModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddModule.ForeColor = System.Drawing.Color.White;
+            this.btnAddModule.Location = new System.Drawing.Point(15, 12);
+            this.btnAddModule.Name = "btnAddModule";
+            this.btnAddModule.Size = new System.Drawing.Size(106, 38);
+            this.btnAddModule.TabIndex = 2;
+            this.btnAddModule.Text = "Insert Module";
+            this.btnAddModule.UseVisualStyleBackColor = false;
+            this.btnAddModule.Click += new System.EventHandler(this.btnAddModule_Click);
             // 
             // pnlModuleTopic
             // 
@@ -295,7 +330,7 @@
             this.pnlModuleTopic.Controls.Add(this.dgvModuleTopic);
             this.pnlModuleTopic.Location = new System.Drawing.Point(0, 0);
             this.pnlModuleTopic.Name = "pnlModuleTopic";
-            this.pnlModuleTopic.Size = new System.Drawing.Size(914, 575);
+            this.pnlModuleTopic.Size = new System.Drawing.Size(958, 665);
             this.pnlModuleTopic.TabIndex = 8;
             // 
             // pnlModuleTopicDialog
@@ -309,13 +344,30 @@
             this.pnlModuleTopicDialog.Controls.Add(this.lblModuleTopicDesc);
             this.pnlModuleTopicDialog.Controls.Add(this.lblModuleTopicHeading);
             this.pnlModuleTopicDialog.Controls.Add(this.btnSubmitModuleTopic);
-            this.pnlModuleTopicDialog.Location = new System.Drawing.Point(258, 191);
+            this.pnlModuleTopicDialog.Location = new System.Drawing.Point(269, 270);
             this.pnlModuleTopicDialog.Name = "pnlModuleTopicDialog";
-            this.pnlModuleTopicDialog.Size = new System.Drawing.Size(402, 207);
+            this.pnlModuleTopicDialog.Size = new System.Drawing.Size(420, 207);
             this.pnlModuleTopicDialog.TabIndex = 10;
+            // 
+            // btnCloseModuleTopic
+            // 
+            this.btnCloseModuleTopic.FlatAppearance.BorderSize = 0;
+            this.btnCloseModuleTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
+            this.btnCloseModuleTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.btnCloseModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseModuleTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseModuleTopic.ForeColor = System.Drawing.Color.White;
+            this.btnCloseModuleTopic.Location = new System.Drawing.Point(356, 0);
+            this.btnCloseModuleTopic.Name = "btnCloseModuleTopic";
+            this.btnCloseModuleTopic.Size = new System.Drawing.Size(46, 40);
+            this.btnCloseModuleTopic.TabIndex = 10;
+            this.btnCloseModuleTopic.Text = "✕";
+            this.btnCloseModuleTopic.UseVisualStyleBackColor = true;
+            this.btnCloseModuleTopic.Click += new System.EventHandler(this.btnCloseModuleTopic_Click);
             // 
             // cmbModule
             // 
+            this.cmbModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModule.FormattingEnabled = true;
             this.cmbModule.Location = new System.Drawing.Point(196, 102);
             this.cmbModule.Name = "cmbModule";
@@ -334,6 +386,7 @@
             // 
             // cmbTopic
             // 
+            this.cmbTopic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTopic.FormattingEnabled = true;
             this.cmbTopic.Location = new System.Drawing.Point(196, 128);
             this.cmbTopic.Name = "cmbTopic";
@@ -390,9 +443,9 @@
             this.panel7.Controls.Add(this.pnlDeleteModuleTopic);
             this.panel7.Controls.Add(this.pnlUpdateModuleTopic);
             this.panel7.Controls.Add(this.pnlAddModuleTopic);
-            this.panel7.Location = new System.Drawing.Point(20, 18);
+            this.panel7.Location = new System.Drawing.Point(19, 9);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(498, 100);
+            this.panel7.Size = new System.Drawing.Size(426, 60);
             this.panel7.TabIndex = 9;
             // 
             // pnlDeleteModuleTopic
@@ -401,7 +454,7 @@
             this.pnlDeleteModuleTopic.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlDeleteModuleTopic.Location = new System.Drawing.Point(274, 0);
             this.pnlDeleteModuleTopic.Name = "pnlDeleteModuleTopic";
-            this.pnlDeleteModuleTopic.Size = new System.Drawing.Size(137, 100);
+            this.pnlDeleteModuleTopic.Size = new System.Drawing.Size(137, 60);
             this.pnlDeleteModuleTopic.TabIndex = 8;
             // 
             // btnDeleteModuleTopic
@@ -409,10 +462,10 @@
             this.btnDeleteModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(66)))), ((int)(((byte)(69)))));
             this.btnDeleteModuleTopic.FlatAppearance.BorderSize = 0;
             this.btnDeleteModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteModuleTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.btnDeleteModuleTopic.Location = new System.Drawing.Point(21, 29);
+            this.btnDeleteModuleTopic.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteModuleTopic.Location = new System.Drawing.Point(21, 12);
             this.btnDeleteModuleTopic.Name = "btnDeleteModuleTopic";
-            this.btnDeleteModuleTopic.Size = new System.Drawing.Size(92, 38);
+            this.btnDeleteModuleTopic.Size = new System.Drawing.Size(105, 38);
             this.btnDeleteModuleTopic.TabIndex = 4;
             this.btnDeleteModuleTopic.Text = "Delete";
             this.btnDeleteModuleTopic.UseVisualStyleBackColor = false;
@@ -424,7 +477,7 @@
             this.pnlUpdateModuleTopic.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlUpdateModuleTopic.Location = new System.Drawing.Point(137, 0);
             this.pnlUpdateModuleTopic.Name = "pnlUpdateModuleTopic";
-            this.pnlUpdateModuleTopic.Size = new System.Drawing.Size(137, 100);
+            this.pnlUpdateModuleTopic.Size = new System.Drawing.Size(137, 60);
             this.pnlUpdateModuleTopic.TabIndex = 7;
             // 
             // btnUpdateModuleTopic
@@ -432,8 +485,8 @@
             this.btnUpdateModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.btnUpdateModuleTopic.FlatAppearance.BorderSize = 0;
             this.btnUpdateModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateModuleTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnUpdateModuleTopic.Location = new System.Drawing.Point(17, 29);
+            this.btnUpdateModuleTopic.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateModuleTopic.Location = new System.Drawing.Point(15, 12);
             this.btnUpdateModuleTopic.Name = "btnUpdateModuleTopic";
             this.btnUpdateModuleTopic.Size = new System.Drawing.Size(105, 38);
             this.btnUpdateModuleTopic.TabIndex = 3;
@@ -447,7 +500,7 @@
             this.pnlAddModuleTopic.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAddModuleTopic.Location = new System.Drawing.Point(0, 0);
             this.pnlAddModuleTopic.Name = "pnlAddModuleTopic";
-            this.pnlAddModuleTopic.Size = new System.Drawing.Size(137, 100);
+            this.pnlAddModuleTopic.Size = new System.Drawing.Size(137, 60);
             this.pnlAddModuleTopic.TabIndex = 0;
             // 
             // btnAddModuleTopic
@@ -457,8 +510,8 @@
             this.btnAddModuleTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnAddModuleTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnAddModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddModuleTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnAddModuleTopic.Location = new System.Drawing.Point(15, 29);
+            this.btnAddModuleTopic.ForeColor = System.Drawing.Color.White;
+            this.btnAddModuleTopic.Location = new System.Drawing.Point(15, 12);
             this.btnAddModuleTopic.Name = "btnAddModuleTopic";
             this.btnAddModuleTopic.Size = new System.Drawing.Size(106, 38);
             this.btnAddModuleTopic.TabIndex = 2;
@@ -469,9 +522,9 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.pnlBack);
-            this.panel4.Location = new System.Drawing.Point(753, 21);
+            this.panel4.Location = new System.Drawing.Point(804, 9);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(149, 100);
+            this.panel4.Size = new System.Drawing.Size(149, 60);
             this.panel4.TabIndex = 8;
             // 
             // pnlBack
@@ -480,7 +533,7 @@
             this.pnlBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlBack.Location = new System.Drawing.Point(0, 0);
             this.pnlBack.Name = "pnlBack";
-            this.pnlBack.Size = new System.Drawing.Size(137, 100);
+            this.pnlBack.Size = new System.Drawing.Size(137, 60);
             this.pnlBack.TabIndex = 0;
             // 
             // btnBack
@@ -490,8 +543,8 @@
             this.btnBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnBack.Location = new System.Drawing.Point(15, 29);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(15, 12);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(106, 38);
             this.btnBack.TabIndex = 2;
@@ -506,27 +559,11 @@
             this.dgvModuleTopic.AllowUserToResizeRows = false;
             this.dgvModuleTopic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvModuleTopic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModuleTopic.Location = new System.Drawing.Point(20, 145);
+            this.dgvModuleTopic.Location = new System.Drawing.Point(19, 134);
             this.dgvModuleTopic.Name = "dgvModuleTopic";
-            this.dgvModuleTopic.Size = new System.Drawing.Size(873, 409);
+            this.dgvModuleTopic.Size = new System.Drawing.Size(916, 512);
             this.dgvModuleTopic.TabIndex = 0;
             this.dgvModuleTopic.SelectionChanged += new System.EventHandler(this.dgvModuleTopic_SelectionChanged);
-            // 
-            // btnAddModule
-            // 
-            this.btnAddModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
-            this.btnAddModule.FlatAppearance.BorderSize = 0;
-            this.btnAddModule.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
-            this.btnAddModule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.btnAddModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnAddModule.Location = new System.Drawing.Point(15, 29);
-            this.btnAddModule.Name = "btnAddModule";
-            this.btnAddModule.Size = new System.Drawing.Size(106, 38);
-            this.btnAddModule.TabIndex = 2;
-            this.btnAddModule.Text = "Insert Module";
-            this.btnAddModule.UseVisualStyleBackColor = false;
-            this.btnAddModule.Click += new System.EventHandler(this.btnAddModule_Click);
             // 
             // dgvTopic
             // 
@@ -535,12 +572,12 @@
             this.dgvTopic.AllowUserToResizeRows = false;
             this.dgvTopic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvTopic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTopic.Location = new System.Drawing.Point(467, 172);
+            this.dgvTopic.Location = new System.Drawing.Point(484, 134);
             this.dgvTopic.Name = "dgvTopic";
             this.dgvTopic.ReadOnly = true;
             this.dgvTopic.RowHeadersVisible = false;
             this.dgvTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTopic.Size = new System.Drawing.Size(435, 382);
+            this.dgvTopic.Size = new System.Drawing.Size(450, 515);
             this.dgvTopic.TabIndex = 7;
             this.dgvTopic.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvTopic_DataBindingComplete);
             this.dgvTopic.SelectionChanged += new System.EventHandler(this.dgvTopic_SelectionChanged);
@@ -548,9 +585,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(753, 21);
+            this.panel1.Location = new System.Drawing.Point(804, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 100);
+            this.panel1.Size = new System.Drawing.Size(149, 60);
             this.panel1.TabIndex = 7;
             // 
             // panel5
@@ -559,7 +596,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(137, 100);
+            this.panel5.Size = new System.Drawing.Size(137, 60);
             this.panel5.TabIndex = 0;
             // 
             // btnModuleTopic
@@ -569,8 +606,8 @@
             this.btnModuleTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
             this.btnModuleTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.btnModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModuleTopic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.btnModuleTopic.Location = new System.Drawing.Point(15, 29);
+            this.btnModuleTopic.ForeColor = System.Drawing.Color.White;
+            this.btnModuleTopic.Location = new System.Drawing.Point(13, 12);
             this.btnModuleTopic.Name = "btnModuleTopic";
             this.btnModuleTopic.Size = new System.Drawing.Size(106, 38);
             this.btnModuleTopic.TabIndex = 2;
@@ -578,37 +615,9 @@
             this.btnModuleTopic.UseVisualStyleBackColor = false;
             this.btnModuleTopic.Click += new System.EventHandler(this.btnModuleTopic_Click);
             // 
-            // btnClose
+            // errorModule
             // 
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(356, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(46, 40);
-            this.btnClose.TabIndex = 9;
-            this.btnClose.Text = "✕";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnCloseModuleTopic
-            // 
-            this.btnCloseModuleTopic.FlatAppearance.BorderSize = 0;
-            this.btnCloseModuleTopic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
-            this.btnCloseModuleTopic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
-            this.btnCloseModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseModuleTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseModuleTopic.ForeColor = System.Drawing.Color.White;
-            this.btnCloseModuleTopic.Location = new System.Drawing.Point(356, 0);
-            this.btnCloseModuleTopic.Name = "btnCloseModuleTopic";
-            this.btnCloseModuleTopic.Size = new System.Drawing.Size(46, 40);
-            this.btnCloseModuleTopic.TabIndex = 10;
-            this.btnCloseModuleTopic.Text = "✕";
-            this.btnCloseModuleTopic.UseVisualStyleBackColor = true;
-            this.btnCloseModuleTopic.Click += new System.EventHandler(this.btnCloseModuleTopic_Click);
+            this.errorModule.ContainerControl = this;
             // 
             // ucModuleTopic
             // 
@@ -622,7 +631,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvModule);
             this.Name = "ucModuleTopic";
-            this.Size = new System.Drawing.Size(914, 575);
+            this.Size = new System.Drawing.Size(958, 665);
             this.Load += new System.EventHandler(this.ucModuleTopic_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).EndInit();
             this.pnlModuleDialog.ResumeLayout(false);
@@ -645,6 +654,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorModule)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,5 +704,6 @@
         private System.Windows.Forms.Button btnSubmitModuleTopic;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCloseModuleTopic;
+        private System.Windows.Forms.ErrorProvider errorModule;
     }
 }

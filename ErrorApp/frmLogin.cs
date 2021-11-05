@@ -29,13 +29,10 @@ namespace ErrorApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            txtEmail.Text = "s221424660@mandela.ac.za";
-            txtPassword.Text = "Chenay11581975";
-
             User user = new User(txtEmail.Text, txtPassword.Text);
             DataTable dt = bll.GetCountLogin(user);
 
-            if (dt.Rows[0][0].ToString() == "1")
+            if (Convert.ToInt32(dt.Rows[0][0].ToString()) > 0)
             { 
                 dtLogin = bll.GetLoginUser(user);
 
@@ -63,6 +60,11 @@ namespace ErrorApp
                 txtPassword.UseSystemPasswordChar = false;
             else if (!chkShowPass.Checked)
                 txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
