@@ -17,5 +17,10 @@ namespace DAL
             ModuleID = moduleID;
             TopicID = topicID;
         }
+
+        public ModuleTopic(int moduleTopicID)
+        {
+            ModuleTopicID = moduleTopicID;
+        }
     }
 }

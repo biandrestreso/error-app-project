@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dgvDashboard = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDashboard)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dgvDashboard
+            // 
+            this.dgvDashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDashboard.Location = new System.Drawing.Point(13, 245);
+            this.dgvDashboard.Name = "dgvDashboard";
+            this.dgvDashboard.Size = new System.Drawing.Size(839, 262);
+            this.dgvDashboard.TabIndex = 0;
             // 
             // ucDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.Controls.Add(this.dgvDashboard);
             this.Name = "ucDashboard";
-            this.Size = new System.Drawing.Size(950, 481);
+            this.Size = new System.Drawing.Size(950, 524);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDashboard)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvDashboard;
     }
 }

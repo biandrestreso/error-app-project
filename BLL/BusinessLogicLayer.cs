@@ -12,6 +12,16 @@ namespace BLL
     {
         DataAccessLayer dal = new DataAccessLayer();
 
+        public DataTable GetCountLogin(User user)
+        {
+            return dal.GetCountLogin(user);
+        }
+
+        public DataTable GetLoginUser(User user)
+        {
+            return dal.GetLoginUser(user);
+        }
+
         public DataTable GetError()
         {
             return dal.GetError();
@@ -25,6 +35,11 @@ namespace BLL
         public DataTable GetModule()
         {
             return dal.GetModule();
+        }
+
+        public DataTable GetModuleAndYear()
+        {
+            return dal.GetModuleAndYear();
         }
 
         public DataTable GetTopic()
@@ -67,6 +82,11 @@ namespace BLL
             return dal.InsertUserModule(userModule);
         }
 
+        public int DeleteUserModule(UserModule userModule)
+        {
+            return dal.DeleteUserModule(userModule);
+        }
+
         public int InsertModule(Module module)
         {
             return dal.InsertModule(module);
@@ -80,6 +100,96 @@ namespace BLL
         public int InsertModuleTopic(ModuleTopic moduleTopic)
         {
             return dal.InsertModuleTopic(moduleTopic);
+        }
+
+        public int UpdateModule(Module module)
+        {
+            return dal.UpdateModule(module);
+        }
+
+        public int UpdateTopic(Topic topic)
+        {
+            return dal.UpdateTopic(topic);
+        }
+
+        public int DeleteModuleTopic(ModuleTopic moduleTopic)
+        {
+            return dal.DeleteModuleTopic(moduleTopic);
+        }
+
+        public int DeleteModule(Module module)
+        {
+            return dal.DeleteModule(module);
+        }
+
+        public int DeleteTopic(Topic topic)
+        {
+            return dal.DeleteTopic(topic);
+        }
+
+        public int DeleteError(Error error)
+        {
+            return dal.DeleteError(error);
+        }
+
+        public int UpdateError(Error error)
+        {
+            return dal.UpdateError(error);
+        }
+
+        public int InsertSolutionError(SolutionError solutionError)
+        {
+            return dal.InsertSolutionError(solutionError);
+        }
+
+        public DataTable GetSolutionError()
+        {
+            return dal.GetSolutionError();
+        }
+
+        public int UpdateSolution(SolutionError solutionError)
+        {
+            return dal.UpdateSolution(solutionError);
+        }
+
+        public int DeleteSolution(SolutionError solutionError)
+        {
+            return dal.DeleteSolution(solutionError);
+        }
+
+        public DataTable GetUser()
+        {
+            return dal.GetUser();
+        }
+
+        public DataTable GetRole()
+        {
+            return dal.GetRole();
+        }
+
+        public DataTable GetUserModule(UserModule userModule)
+        {
+            return dal.GetUserModule(userModule);
+        }
+
+        public int UpdateUser(User user)
+        {
+            return dal.UpdateUser(user);
+        }
+
+        public int DeleteUser(User user)
+        {
+            return dal.DeleteUser(user);
+        }
+
+        public int DeleteUserSolution(SolutionError solutionError)
+        {
+            return dal.DeleteUserSolution(solutionError);
+        }
+
+        public int DeleteUserError(Error error)
+        {
+            return dal.DeleteUserError(error);
         }
     }
 }

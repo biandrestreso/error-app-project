@@ -17,8 +17,20 @@ namespace DAL
             YearID = yearID;
         }
 
+        public Module(int moduleID, string empty)
+        {
+            ModuleID = moduleID;
+        }
+
         public Module(string moduleDesc, int yearID)
         {
+            ModuleDesc = moduleDesc;
+            YearID = yearID;
+        }
+
+        public Module(int moduleID, string moduleDesc, int yearID)
+        {
+            ModuleID = moduleID;
             ModuleDesc = moduleDesc;
             YearID = yearID;
         }

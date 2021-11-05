@@ -23,5 +23,26 @@ namespace DAL
             Password = password;
             RoleID = roleID;
         }
+
+        public User(int userID, string username, string surname, string email, string password, int roleID)
+        {
+            UserID = userID;
+            Username = username;
+            Surname = surname;
+            Email = email;
+            Password = password;
+            RoleID = roleID;
+        }
+
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
+
+        public User(int userID)
+        {
+            UserID = userID;
+        }
     }
 }

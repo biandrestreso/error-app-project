@@ -16,5 +16,10 @@ namespace DAL
             UserID = userID;
             ModuleID = moduleID;
         }
+
+        public UserModule(int userID)
+        {
+            UserID = userID;
+        }
     }
 }

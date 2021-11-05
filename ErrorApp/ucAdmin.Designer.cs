@@ -30,19 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSideMenu = new System.Windows.Forms.Panel();
-            this.btnModule = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
-            this.pnlStats = new System.Windows.Forms.Panel();
-            this.pnlAddUser = new System.Windows.Forms.Panel();
-            this.clbModules = new System.Windows.Forms.CheckedListBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblYear = new System.Windows.Forms.Label();
+            this.pnlStats = new System.Windows.Forms.Panel();
+            this.pnlUserDialog = new System.Windows.Forms.Panel();
+            this.clbModules = new System.Windows.Forms.CheckedListBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.cmbYear = new System.Windows.Forms.ComboBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -50,9 +49,12 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblInsertDesc = new System.Windows.Forms.Label();
             this.lblAddError = new System.Windows.Forms.Label();
+            this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlSideMenu.SuspendLayout();
-            this.pnlAddUser.SuspendLayout();
+            this.pnlUserDialog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,41 +70,58 @@
             // pnlSideMenu
             // 
             this.pnlSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.pnlSideMenu.Controls.Add(this.btnModule);
-            this.pnlSideMenu.Controls.Add(this.btnAddUser);
+            this.pnlSideMenu.Controls.Add(this.btnDelete);
+            this.pnlSideMenu.Controls.Add(this.btnUpdate);
+            this.pnlSideMenu.Controls.Add(this.btnAdd);
             this.pnlSideMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSideMenu.Location = new System.Drawing.Point(0, 149);
             this.pnlSideMenu.Name = "pnlSideMenu";
             this.pnlSideMenu.Size = new System.Drawing.Size(264, 393);
             this.pnlSideMenu.TabIndex = 1;
             // 
-            // btnModule
+            // btnDelete
             // 
-            this.btnModule.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModule.FlatAppearance.BorderSize = 0;
-            this.btnModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
-            this.btnModule.Location = new System.Drawing.Point(0, 46);
-            this.btnModule.Name = "btnModule";
-            this.btnModule.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnModule.Size = new System.Drawing.Size(264, 45);
-            this.btnModule.TabIndex = 1;
-            this.btnModule.Text = "button3";
-            this.btnModule.UseVisualStyleBackColor = true;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
+            this.btnDelete.Location = new System.Drawing.Point(0, 91);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnDelete.Size = new System.Drawing.Size(264, 45);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Delete User";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnAddUser
+            // btnUpdate
             // 
-            this.btnAddUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAddUser.FlatAppearance.BorderSize = 0;
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
-            this.btnAddUser.Location = new System.Drawing.Point(0, 0);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(264, 46);
-            this.btnAddUser.TabIndex = 0;
-            this.btnAddUser.Text = "Add User";
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
+            this.btnUpdate.Location = new System.Drawing.Point(0, 46);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnUpdate.Size = new System.Drawing.Size(264, 45);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Update User";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(264, 46);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add User";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pnlStats
             // 
@@ -113,60 +132,51 @@
             this.pnlStats.Size = new System.Drawing.Size(264, 149);
             this.pnlStats.TabIndex = 0;
             // 
-            // pnlAddUser
+            // pnlUserDialog
             // 
-            this.pnlAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.pnlAddUser.Controls.Add(this.clbModules);
-            this.pnlAddUser.Controls.Add(this.btnAdd);
-            this.pnlAddUser.Controls.Add(this.lblYear);
-            this.pnlAddUser.Controls.Add(this.lblRole);
-            this.pnlAddUser.Controls.Add(this.lblPassword);
-            this.pnlAddUser.Controls.Add(this.lblEmail);
-            this.pnlAddUser.Controls.Add(this.lblSurname);
-            this.pnlAddUser.Controls.Add(this.lblName);
-            this.pnlAddUser.Controls.Add(this.cmbYear);
-            this.pnlAddUser.Controls.Add(this.cmbRole);
-            this.pnlAddUser.Controls.Add(this.txtPassword);
-            this.pnlAddUser.Controls.Add(this.txtEmail);
-            this.pnlAddUser.Controls.Add(this.txtSurname);
-            this.pnlAddUser.Controls.Add(this.txtName);
-            this.pnlAddUser.Controls.Add(this.lblInsertDesc);
-            this.pnlAddUser.Controls.Add(this.lblAddError);
-            this.pnlAddUser.Location = new System.Drawing.Point(362, 46);
-            this.pnlAddUser.Name = "pnlAddUser";
-            this.pnlAddUser.Size = new System.Drawing.Size(328, 416);
-            this.pnlAddUser.TabIndex = 1;
+            this.pnlUserDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.pnlUserDialog.Controls.Add(this.btnClose);
+            this.pnlUserDialog.Controls.Add(this.clbModules);
+            this.pnlUserDialog.Controls.Add(this.btnSubmit);
+            this.pnlUserDialog.Controls.Add(this.lblRole);
+            this.pnlUserDialog.Controls.Add(this.lblPassword);
+            this.pnlUserDialog.Controls.Add(this.lblEmail);
+            this.pnlUserDialog.Controls.Add(this.lblSurname);
+            this.pnlUserDialog.Controls.Add(this.lblName);
+            this.pnlUserDialog.Controls.Add(this.cmbRole);
+            this.pnlUserDialog.Controls.Add(this.txtPassword);
+            this.pnlUserDialog.Controls.Add(this.txtEmail);
+            this.pnlUserDialog.Controls.Add(this.txtSurname);
+            this.pnlUserDialog.Controls.Add(this.txtName);
+            this.pnlUserDialog.Controls.Add(this.lblInsertDesc);
+            this.pnlUserDialog.Controls.Add(this.lblAddError);
+            this.pnlUserDialog.Location = new System.Drawing.Point(362, 46);
+            this.pnlUserDialog.Name = "pnlUserDialog";
+            this.pnlUserDialog.Size = new System.Drawing.Size(328, 447);
+            this.pnlUserDialog.TabIndex = 1;
             // 
             // clbModules
             // 
+            this.clbModules.CheckOnClick = true;
             this.clbModules.FormattingEnabled = true;
-            this.clbModules.Location = new System.Drawing.Point(173, 247);
+            this.clbModules.Location = new System.Drawing.Point(21, 217);
             this.clbModules.Name = "clbModules";
-            this.clbModules.Size = new System.Drawing.Size(141, 94);
+            this.clbModules.Size = new System.Drawing.Size(293, 184);
             this.clbModules.TabIndex = 9;
+            this.clbModules.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbModules_ItemCheck);
             // 
-            // btnAdd
+            // btnSubmit
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(175)))), ((int)(((byte)(244)))));
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(239, 377);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lblYear
-            // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.ForeColor = System.Drawing.Color.White;
-            this.lblYear.Location = new System.Drawing.Point(18, 219);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(111, 13);
-            this.lblYear.TabIndex = 7;
-            this.lblYear.Text = "Filter Modules by Year";
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(175)))), ((int)(((byte)(244)))));
+            this.btnSubmit.FlatAppearance.BorderSize = 0;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Location = new System.Drawing.Point(239, 408);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.Text = "Add";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // lblRole
             // 
@@ -218,15 +228,6 @@
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Name";
             // 
-            // cmbYear
-            // 
-            this.cmbYear.FormattingEnabled = true;
-            this.cmbYear.Location = new System.Drawing.Point(173, 216);
-            this.cmbYear.Name = "cmbYear";
-            this.cmbYear.Size = new System.Drawing.Size(141, 21);
-            this.cmbYear.TabIndex = 6;
-            this.cmbYear.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
-            // 
             // cmbRole
             // 
             this.cmbRole.FormattingEnabled = true;
@@ -234,6 +235,7 @@
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(141, 21);
             this.cmbRole.TabIndex = 6;
+            this.cmbRole.SelectedIndexChanged += new System.EventHandler(this.cmbRole_SelectedIndexChanged);
             // 
             // txtPassword
             // 
@@ -285,20 +287,56 @@
             this.lblAddError.TabIndex = 3;
             this.lblAddError.Text = "Add User";
             // 
+            // dgvUser
+            // 
+            this.dgvUser.AllowUserToAddRows = false;
+            this.dgvUser.AllowUserToDeleteRows = false;
+            this.dgvUser.AllowUserToResizeColumns = false;
+            this.dgvUser.AllowUserToResizeRows = false;
+            this.dgvUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUser.Location = new System.Drawing.Point(285, 62);
+            this.dgvUser.Name = "dgvUser";
+            this.dgvUser.ReadOnly = true;
+            this.dgvUser.RowHeadersVisible = false;
+            this.dgvUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUser.Size = new System.Drawing.Size(537, 467);
+            this.dgvUser.TabIndex = 10;
+            this.dgvUser.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvUser_DataBindingComplete);
+            this.dgvUser.SelectionChanged += new System.EventHandler(this.dgvUser_SelectionChanged);
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(282, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(46, 40);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "✕";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // ucAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.Controls.Add(this.pnlAddUser);
+            this.Controls.Add(this.pnlUserDialog);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgvUser);
             this.Name = "ucAdmin";
             this.Size = new System.Drawing.Size(933, 542);
             this.Load += new System.EventHandler(this.ucAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.pnlSideMenu.ResumeLayout(false);
-            this.pnlAddUser.ResumeLayout(false);
-            this.pnlAddUser.PerformLayout();
+            this.pnlUserDialog.ResumeLayout(false);
+            this.pnlUserDialog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,10 +345,10 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlSideMenu;
-        private System.Windows.Forms.Button btnModule;
-        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel pnlStats;
-        private System.Windows.Forms.Panel pnlAddUser;
+        private System.Windows.Forms.Panel pnlUserDialog;
         private System.Windows.Forms.Label lblInsertDesc;
         private System.Windows.Forms.Label lblAddError;
         private System.Windows.Forms.Label lblRole;
@@ -323,9 +361,10 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.CheckedListBox clbModules;
-        private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.ComboBox cmbYear;
+        private System.Windows.Forms.DataGridView dgvUser;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnClose;
     }
 }

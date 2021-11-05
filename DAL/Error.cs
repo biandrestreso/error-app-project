@@ -23,5 +23,29 @@ namespace DAL
             ProgLangID = progLangID;
             ModuleTopicID = moduleTopicID;
         }
+
+        public Error(int errorID, string errorDesc, int progLangID, int moduleTopicID)
+        {
+            ErrorID = errorID;
+            ErrorDesc = errorDesc;
+            ProgLangID = progLangID;
+            ModuleTopicID = moduleTopicID;
+        }
+
+        public Error(int errorID)
+        {
+            ErrorID = errorID;
+        }
+
+        public Error(int studentID, double placeholder)
+        {
+            StudentID = studentID;
+        }
+
+        public Error(int errorID, string errorStatus)
+        {
+            ErrorID = errorID;
+            ErrorStatus = errorStatus;
+        }
     }
 }

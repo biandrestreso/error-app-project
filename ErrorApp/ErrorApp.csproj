@@ -78,12 +78,6 @@
     <Compile Include="ucError.Designer.cs">
       <DependentUpon>ucError.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucLogin.Designer.cs">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="ucModuleTopic.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,11 +114,11 @@
     <EmbeddedResource Include="ucError.resx">
       <DependentUpon>ucError.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucLogin.resx">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ucModuleTopic.resx">
       <DependentUpon>ucModuleTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSolution.resx">
+      <DependentUpon>ucSolution.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

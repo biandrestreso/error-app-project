@@ -31,18 +31,23 @@
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnModuleTopic = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSolution = new System.Windows.Forms.Button();
             this.btnError = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnSignOut = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.pnlTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ucModuleTopic = new ErrorApp.ucModuleTopic();
-            this.ucAdmin = new ErrorApp.ucAdmin();
             this.ucError = new ErrorApp.ucError();
+            this.ucAdmin = new ErrorApp.ucAdmin();
+            this.ucModuleTopic = new ErrorApp.ucModuleTopic();
+            this.ucSolution = new ErrorApp.ucSolution();
             this.pnlSidebar.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             this.pnlTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,10 +56,10 @@
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.pnlSidebar.Controls.Add(this.btnAdmin);
             this.pnlSidebar.Controls.Add(this.btnModuleTopic);
-            this.pnlSidebar.Controls.Add(this.button2);
+            this.pnlSidebar.Controls.Add(this.btnSolution);
             this.pnlSidebar.Controls.Add(this.btnError);
             this.pnlSidebar.Controls.Add(this.btnDashboard);
-            this.pnlSidebar.Controls.Add(this.button8);
+            this.pnlSidebar.Controls.Add(this.btnSignOut);
             this.pnlSidebar.Controls.Add(this.pnlUser);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
@@ -96,21 +101,22 @@
             this.btnModuleTopic.UseVisualStyleBackColor = true;
             this.btnModuleTopic.Click += new System.EventHandler(this.btnModuleTopic_Click);
             // 
-            // button2
+            // btnSolution
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.button2.Location = new System.Drawing.Point(0, 200);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 50);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Solutions";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSolution.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSolution.FlatAppearance.BorderSize = 0;
+            this.btnSolution.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
+            this.btnSolution.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.btnSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSolution.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnSolution.Location = new System.Drawing.Point(0, 200);
+            this.btnSolution.Name = "btnSolution";
+            this.btnSolution.Size = new System.Drawing.Size(170, 50);
+            this.btnSolution.TabIndex = 11;
+            this.btnSolution.Text = "Solutions";
+            this.btnSolution.UseVisualStyleBackColor = true;
+            this.btnSolution.Click += new System.EventHandler(this.btnSolution_Click);
             // 
             // btnError
             // 
@@ -144,30 +150,65 @@
             this.btnDashboard.TabIndex = 9;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // button8
+            // btnSignOut
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
-            this.button8.Location = new System.Drawing.Point(0, 560);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(170, 50);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Sign Out";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnSignOut.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSignOut.FlatAppearance.BorderSize = 0;
+            this.btnSignOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(60)))), ((int)(((byte)(66)))));
+            this.btnSignOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSignOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.btnSignOut.Location = new System.Drawing.Point(0, 560);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Size = new System.Drawing.Size(170, 50);
+            this.btnSignOut.TabIndex = 8;
+            this.btnSignOut.Text = "Sign Out";
+            this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // pnlUser
             // 
+            this.pnlUser.Controls.Add(this.lblRole);
+            this.pnlUser.Controls.Add(this.lblEmail);
+            this.pnlUser.Controls.Add(this.lblName);
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUser.Location = new System.Drawing.Point(0, 0);
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(170, 100);
             this.pnlUser.TabIndex = 0;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.lblRole.Location = new System.Drawing.Point(68, 69);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(29, 13);
+            this.lblRole.TabIndex = 1;
+            this.lblRole.Text = "Role";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.lblEmail.Location = new System.Drawing.Point(68, 40);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 0;
+            this.lblEmail.Text = "Email";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(138)))), ((int)(((byte)(143)))));
+            this.lblName.Location = new System.Drawing.Point(68, 17);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
             // 
             // pnlTitleBar
             // 
@@ -213,13 +254,13 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ucModuleTopic
+            // ucError
             // 
-            this.ucModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ucModuleTopic.Location = new System.Drawing.Point(170, 40);
-            this.ucModuleTopic.Name = "ucModuleTopic";
-            this.ucModuleTopic.Size = new System.Drawing.Size(958, 570);
-            this.ucModuleTopic.TabIndex = 4;
+            this.ucError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucError.Location = new System.Drawing.Point(170, 40);
+            this.ucError.Name = "ucError";
+            this.ucError.Size = new System.Drawing.Size(958, 570);
+            this.ucError.TabIndex = 2;
             // 
             // ucAdmin
             // 
@@ -229,13 +270,21 @@
             this.ucAdmin.Size = new System.Drawing.Size(958, 570);
             this.ucAdmin.TabIndex = 3;
             // 
-            // ucError
+            // ucModuleTopic
             // 
-            this.ucError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ucError.Location = new System.Drawing.Point(170, 40);
-            this.ucError.Name = "ucError";
-            this.ucError.Size = new System.Drawing.Size(958, 570);
-            this.ucError.TabIndex = 2;
+            this.ucModuleTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucModuleTopic.Location = new System.Drawing.Point(170, 40);
+            this.ucModuleTopic.Name = "ucModuleTopic";
+            this.ucModuleTopic.Size = new System.Drawing.Size(958, 570);
+            this.ucModuleTopic.TabIndex = 4;
+            // 
+            // ucSolution
+            // 
+            this.ucSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ucSolution.Location = new System.Drawing.Point(170, 40);
+            this.ucSolution.Name = "ucSolution";
+            this.ucSolution.Size = new System.Drawing.Size(958, 570);
+            this.ucSolution.TabIndex = 5;
             // 
             // frmMenu
             // 
@@ -243,16 +292,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1128, 610);
-            this.Controls.Add(this.ucModuleTopic);
-            this.Controls.Add(this.ucAdmin);
+            this.Controls.Add(this.ucSolution);
             this.Controls.Add(this.ucError);
+            this.Controls.Add(this.ucAdmin);
             this.Controls.Add(this.pnlTitleBar);
             this.Controls.Add(this.pnlSidebar);
+            this.Controls.Add(this.ucModuleTopic);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMenu";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.pnlSidebar.ResumeLayout(false);
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             this.pnlTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -262,18 +314,22 @@
 
         private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.Panel pnlUser;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Panel pnlTitleBar;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Button btnModuleTopic;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSolution;
         private System.Windows.Forms.Button btnError;
         private System.Windows.Forms.Button btnDashboard;
         private ucError ucError;
         private System.Windows.Forms.Button btnMinimize;
         private ucAdmin ucAdmin;
         private ucModuleTopic ucModuleTopic;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblName;
+        private ucSolution ucSolution;
     }
 }
 
