@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* Name:                Biandre
+ * Surname:             Streso
+ * Student Number:      221424660
+ * 
+ * Declaration
+ * - I state that this is my own work.
+ * - I have not submitted another person's practical as my own.
+ * - I understand that copying is a serious form of academic dishonesty.
+ * - I know that I will get zero, if copied.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -180,11 +190,6 @@ namespace BLL
         public int DeleteUser(User user)
         {
             return dal.DeleteUser(user);
-        }
-
-        public int DeleteUserSolution(SolutionError solutionError)
-        {
-            return dal.DeleteUserSolution(solutionError);
         }
 
         public int DeleteUserError(Error error)
