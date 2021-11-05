@@ -36,15 +36,20 @@ namespace ErrorApp
             dgvError.ClearSelection();
         }
 
-        public void resetUC()
+        public void resetUC() //Reset panels and button events
         {
             pnlErrorDialog.Hide();
             pnlUpdate.Hide();
             pnlDelete.Hide();
             pnlSolution.Hide();
+
+            btnError.Click += btnError_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnSolution.Click += btnAddSolution_Click;
         }
 
-        public void refresh()
+        public void refresh()  //Refresh entire usercontrol
         {
             selectDone = false;
 
@@ -101,7 +106,7 @@ namespace ErrorApp
             setColumn();
         }
 
-        private void setColumn()
+        private void setColumn() //Set column width after data is added
         {
             if (dgvError.Rows.Count > 0)
             {
@@ -109,7 +114,7 @@ namespace ErrorApp
             }
         }
 
-        private void btnError_Click(object sender, EventArgs e)
+        private void btnError_Click(object sender, EventArgs e) //Open error add dialog panel
         {
             action = "errorAdd";
 
@@ -125,9 +130,13 @@ namespace ErrorApp
 
             pnlErrorDialog.Show();
             
+            btnError.Click -= btnError_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnSolution.Click -= btnAddSolution_Click;
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e) //Open update dialog panel
         {
             action = "errorUpdate";
 
@@ -146,9 +155,14 @@ namespace ErrorApp
             cmbTopic.SelectedIndex = cmbTopic.FindString(dgvError.Rows[0].Cells["Module and Topic"].Value.ToString());
 
             pnlErrorDialog.Show();
+
+            btnError.Click -= btnError_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnSolution.Click -= btnAddSolution_Click;
         }
 
-        private void btnAddSolution_Click(object sender, EventArgs e)
+        private void btnAddSolution_Click(object sender, EventArgs e) //Open solution dialog panel
         {
             action = "solutionAdd";
 
@@ -163,9 +177,14 @@ namespace ErrorApp
             cmbTopic.Hide();
 
             pnlErrorDialog.Show();
+
+            btnError.Click -= btnError_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnSolution.Click -= btnAddSolution_Click;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) //Add or update items in database based on values
         {
             bool invalid = false;
 
@@ -205,12 +224,17 @@ namespace ErrorApp
                 }
 
                 pnlErrorDialog.Hide();
+
+                btnError.Click += btnError_Click;
+                btnUpdate.Click += btnUpdate_Click;
+                btnDelete.Click += btnDelete_Click;
+                btnSolution.Click += btnAddSolution_Click;
             }
 
             refresh();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e) //Delete error
         {
             switch (int.Parse(dtLogin.Rows[0]["RoleID"].ToString()))
             {
@@ -233,15 +257,21 @@ namespace ErrorApp
                     bll.DeleteError(studentError);
                     break;
             }
+
             refresh();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e) //Close dialog menu and reset button events
         {
             pnlErrorDialog.Hide();
+
+            btnError.Click += btnError_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnSolution.Click += btnAddSolution_Click;
         }
 
-        private void dgvError_SelectionChanged(object sender, EventArgs e)
+        private void dgvError_SelectionChanged(object sender, EventArgs e) //Show buttons based on selection
         {
             switch (Convert.ToInt32(dtLogin.Rows[0]["RoleID"].ToString()))
             {
@@ -271,10 +301,12 @@ namespace ErrorApp
                 case 2:
                     if (dgvError.SelectedRows.Count == 1)
                     {
-                        pnlUpdate.Hide();
+                        pnlUpdate.Show();
                         pnlDelete.Show();
                         if (dgvError.SelectedRows[0].Cells["Status"].Value.ToString() == "Pending")
                             pnlSolution.Show();
+                        else
+                            pnlSolution.Hide();
                     }
                     else if (dgvError.SelectedRows.Count > 1)
                     {
@@ -298,6 +330,12 @@ namespace ErrorApp
                             pnlDelete.Show();
                             pnlSolution.Hide();
                         }
+                        else
+                        {
+                            pnlUpdate.Hide();
+                            pnlDelete.Hide();
+                            pnlSolution.Hide();
+                        }
                     }
                     else if (dgvError.SelectedRows.Count == 0)
                     {
@@ -309,17 +347,17 @@ namespace ErrorApp
             }
         }
 
-        private void dgvError_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvError_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) //Clear dgv after databinding
         {
             dgvError.ClearSelection();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e) //Search for errors in dgv
         {   
             (dgvError.DataSource as DataTable).DefaultView.RowFilter = string.Format("Error LIKE '%{0}%'", txtSearch.Text);
         }
 
-        private void cmbViewProgLang_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbViewProgLang_SelectedIndexChanged(object sender, EventArgs e) //Filter by programming language in dgv
         {
             if (selectDone)
             {
@@ -330,14 +368,14 @@ namespace ErrorApp
             }
         }
 
-        private void btnFilterDate_Click(object sender, EventArgs e)
+        private void btnFilterDate_Click(object sender, EventArgs e) //Gets errors between entered dates
         {
             Error error = new Error(dtpFrom.Value.Date, dtpTo.Value.Date);
             dgvError.DataSource = bll.GetErrorByDate(error);
             setColumn();
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e) //Resets filtering
         {
             refresh();
         }

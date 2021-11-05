@@ -14,17 +14,25 @@ namespace ErrorApp
 {
     public partial class frmLogin : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public frmLogin()
         {
             InitializeComponent();
         }
 
         BusinessLogicLayer bll = new BusinessLogicLayer();
-        public static DataTable dtLogin;
+        public static DataTable dtLogin = new DataTable();
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            lblIncorrect.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -41,6 +49,7 @@ namespace ErrorApp
                 this.Hide();
             }
 
+            lblIncorrect.Show();
             txtPassword.Text = "";
         }
 
@@ -65,6 +74,24 @@ namespace ErrorApp
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void pnlTitleBarLeft_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void pnlTitleBarRight_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

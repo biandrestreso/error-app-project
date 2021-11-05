@@ -32,7 +32,7 @@ namespace ErrorApp
             dgvUser.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public void refresh()
+        public void refresh() //Refresh everything on usercontrol
         {
             cmbRole.DataSource = bll.GetRole();
             cmbRole.ValueMember = "RoleID";
@@ -51,18 +51,26 @@ namespace ErrorApp
                 lblTotalUsers.Text = "No Users";
         }
 
-        public void resetUC()
+        public void resetUC() //Hide dialog if it was open when switching pages
         {
             pnlUserDialog.Hide();
+
+            btnAdd.Click += btnAdd_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e) //Open insert dialog
         {
             isUpdate = false;
             importDone = false;
 
             pnlUserDialog.Show();
             clbModules.Show();
+
+            btnAdd.Click -= btnAdd_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
 
             lblAdminDialog.Text = "Add User";
 
@@ -73,13 +81,17 @@ namespace ErrorApp
             cmbRole.SelectedIndex = 0;
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e) //Open update dialog and get current modules of user
         {
             isUpdate = true;
             importDone = false;
 
             pnlUserDialog.Show();
             clbModules.Show();
+
+            btnAdd.Click -= btnAdd_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
 
             lblAdminDialog.Text = "Update User";
 
@@ -107,23 +119,58 @@ namespace ErrorApp
             importDone = true;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e) //Delete user solutions and errors before deleting user
         {
             double placeholder = 0;
 
-            SolutionError solutionError = new SolutionError(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()), placeholder);
-            bll.DeleteUserSolution(solutionError);
+            try
+            {
+                if (dgvUser.SelectedRows[0].Cells["Role"].Value.ToString() == "Student")
+                {
+                    User user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
+                    DataTable dt = bll.GetLecturerByStudentError(user);
 
-            Error error = new Error(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()), placeholder);
-            bll.DeleteUserError(error);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        user = new User(int.Parse(dr["LecturerID"].ToString()));
+                        bll.DeleteSolutionByLecturer(user);
+                    }
 
-            User user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
-            bll.DeleteUser(user);
+                    Error error = new Error(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()), placeholder);
+                    bll.DeleteUserError(error);
+
+                    user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
+                    bll.DeleteUser(user);
+                }
+                else if (dgvUser.SelectedRows[0].Cells["Role"].Value.ToString() == "Lecturer")
+                {
+                    User user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
+                    DataTable dt = bll.GetLecturerSolutions(user);
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        SolutionError solutionError = new SolutionError(int.Parse(dr["SolutionID"].ToString()));
+                        bll.SetErrorPending(solutionError);
+                    }
+
+                    user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
+                    bll.DeleteUser(user);
+                }
+                else
+                {
+                    User user = new User(int.Parse(dgvUser.SelectedRows[0].Cells["User ID"].Value.ToString()));
+                    bll.DeleteUser(user);
+                }
+            }
+            catch
+            {
+
+            }
 
             refresh();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) //Validates and inserts or updates based on input
         {
             bool invalid = false;
             DataTable dt = (DataTable)dgvUser.DataSource;
@@ -229,18 +276,23 @@ namespace ErrorApp
                         break;
                 }
 
+                btnAdd.Click += btnAdd_Click;
+                btnUpdate.Click += btnUpdate_Click;
+                btnDelete.Click += btnDelete_Click;
+
                 pnlUserDialog.Hide();
                 refresh();
             }
+
             importDone = false;
         }
 
-        private void dgvUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) //Clear selection after dgv is bound to data
         {
             dgvUser.ClearSelection();
         }
 
-        private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbRole_SelectedIndexChanged(object sender, EventArgs e) //Only allow students and lecturers to receive modules
         {
             if (cmbRole.SelectedValue.ToString() == "1")
             {
@@ -256,7 +308,7 @@ namespace ErrorApp
             }
         }
 
-        private void clbModules_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void clbModules_ItemCheck(object sender, ItemCheckEventArgs e) //If it is an update then add modules as ticked or delete module if unticked
         {
             if (importDone)
             {
@@ -274,12 +326,16 @@ namespace ErrorApp
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e) //Close dialog panel
         {
             pnlUserDialog.Hide();
+
+            btnAdd.Click += btnAdd_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
         }
 
-        private void dgvUser_SelectionChanged(object sender, EventArgs e)
+        private void dgvUser_SelectionChanged(object sender, EventArgs e) //Show buttons based on dgv selection
         {
             if (dgvUser.SelectedRows.Count == 1)
             {

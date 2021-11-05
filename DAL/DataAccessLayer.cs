@@ -94,17 +94,6 @@ namespace DAL
             return dt;
         }
 
-        public DataTable GetModuleByYear(Module module)
-        {
-            dbCmd = new SqlCommand("sp_GetModuleByYear", dbConn);
-            dbCmd.CommandType = CommandType.StoredProcedure;
-            dbCmd.Parameters.AddWithValue("@YearID", module.YearID);
-            dbAdapter = new SqlDataAdapter(dbCmd);
-            dt = new DataTable();
-            dbAdapter.Fill(dt);
-            return dt;
-        }
-
         public DataTable GetTopicModule()
         {
             dbCmd = new SqlCommand("sp_GetTopicModule", dbConn);
@@ -729,6 +718,66 @@ namespace DAL
             dt = new DataTable();
             dbAdapter.Fill(dt);
             return dt;
+        }
+
+        public DataTable GetLecturerByStudentError(User user)
+        {
+            dbCmd = new SqlCommand("sp_GetLecturerByStudentError", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@StudentID", user.UserID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetLecturerSolutions(User user)
+        {
+            dbCmd = new SqlCommand("sp_GetLecturerSolutions", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+            dbCmd.Parameters.AddWithValue("@LecturerID", user.UserID);
+            dbAdapter = new SqlDataAdapter(dbCmd);
+            dt = new DataTable();
+            dbAdapter.Fill(dt);
+            return dt;
+        }
+
+        public int DeleteSolutionByLecturer(User user)
+        {
+            try
+            {
+                dbConn.Open();
+            }
+            catch
+            {
+
+            }
+            dbCmd = new SqlCommand("sp_DeleteSolutionByLecturer", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+
+            dbCmd.Parameters.AddWithValue("@LecturerID", user.UserID);
+
+            int x = dbCmd.ExecuteNonQuery();
+            return x;
+        }
+
+        public int SetErrorPending(SolutionError solutionError)
+        {
+            try
+            {
+                dbConn.Open();
+            }
+            catch
+            {
+
+            }
+            dbCmd = new SqlCommand("sp_SetErrorPending", dbConn);
+            dbCmd.CommandType = CommandType.StoredProcedure;
+
+            dbCmd.Parameters.AddWithValue("@SolutionID", solutionError.SolutionID);
+
+            int x = dbCmd.ExecuteNonQuery();
+            return x;
         }
     }
 }

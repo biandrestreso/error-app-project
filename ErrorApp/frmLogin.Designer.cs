@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnlEmail = new System.Windows.Forms.Panel();
@@ -37,19 +38,23 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblHeading = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblIncorrect = new System.Windows.Forms.Label();
+            this.pnlTitleBarRight = new System.Windows.Forms.Panel();
+            this.pnlTitleBarLeft = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlEmail.SuspendLayout();
             this.pnlPassword.SuspendLayout();
+            this.pnlTitleBarRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.pnlTitleBarRight);
+            this.panel1.Controls.Add(this.lblIncorrect);
             this.panel1.Controls.Add(this.chkShowPass);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.pnlEmail);
@@ -61,6 +66,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(511, 631);
             this.panel1.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(465, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(46, 42);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "✕";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // chkShowPass
             // 
@@ -89,7 +111,7 @@
             this.btnLogin.Location = new System.Drawing.Point(270, 288);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(112, 36);
-            this.btnLogin.TabIndex = 13;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Sign In";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -104,7 +126,7 @@
             this.pnlEmail.Location = new System.Drawing.Point(115, 159);
             this.pnlEmail.Name = "pnlEmail";
             this.pnlEmail.Size = new System.Drawing.Size(267, 32);
-            this.pnlEmail.TabIndex = 12;
+            this.pnlEmail.TabIndex = 0;
             this.pnlEmail.Click += new System.EventHandler(this.pnlEmail_Click);
             // 
             // txtEmail
@@ -115,7 +137,7 @@
             this.txtEmail.Location = new System.Drawing.Point(15, 9);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(235, 13);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 0;
             // 
             // pnlPassword
             // 
@@ -127,7 +149,7 @@
             this.pnlPassword.Location = new System.Drawing.Point(115, 227);
             this.pnlPassword.Name = "pnlPassword";
             this.pnlPassword.Size = new System.Drawing.Size(267, 32);
-            this.pnlPassword.TabIndex = 11;
+            this.pnlPassword.TabIndex = 1;
             this.pnlPassword.Click += new System.EventHandler(this.pnlPassword_Click);
             // 
             // txtPassword
@@ -138,7 +160,7 @@
             this.txtPassword.Location = new System.Drawing.Point(14, 9);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(236, 13);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 0;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
@@ -162,22 +184,6 @@
             this.lblEmail.Size = new System.Drawing.Size(58, 20);
             this.lblEmail.TabIndex = 9;
             this.lblEmail.Text = "EMAIL";
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(39)))), ((int)(((byte)(29)))));
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(465, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(46, 40);
-            this.btnClose.TabIndex = 10;
-            this.btnClose.Text = "✕";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblHeading
             // 
@@ -212,12 +218,42 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Error Management app";
             // 
+            // lblIncorrect
+            // 
+            this.lblIncorrect.AutoSize = true;
+            this.lblIncorrect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(71)))), ((int)(((byte)(83)))));
+            this.lblIncorrect.Location = new System.Drawing.Point(250, 336);
+            this.lblIncorrect.Name = "lblIncorrect";
+            this.lblIncorrect.Size = new System.Drawing.Size(158, 13);
+            this.lblIncorrect.TabIndex = 15;
+            this.lblIncorrect.Text = "Incorrect password or username";
+            // 
+            // pnlTitleBarRight
+            // 
+            this.pnlTitleBarRight.Controls.Add(this.btnClose);
+            this.pnlTitleBarRight.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitleBarRight.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitleBarRight.Name = "pnlTitleBarRight";
+            this.pnlTitleBarRight.Size = new System.Drawing.Size(511, 42);
+            this.pnlTitleBarRight.TabIndex = 16;
+            this.pnlTitleBarRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitleBarRight_MouseDown);
+            // 
+            // pnlTitleBarLeft
+            // 
+            this.pnlTitleBarLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitleBarLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitleBarLeft.Name = "pnlTitleBarLeft";
+            this.pnlTitleBarLeft.Size = new System.Drawing.Size(331, 42);
+            this.pnlTitleBarLeft.TabIndex = 5;
+            this.pnlTitleBarLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitleBarLeft_MouseDown);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(842, 631);
+            this.Controls.Add(this.pnlTitleBarLeft);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblHeading);
@@ -232,6 +268,7 @@
             this.pnlEmail.PerformLayout();
             this.pnlPassword.ResumeLayout(false);
             this.pnlPassword.PerformLayout();
+            this.pnlTitleBarRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +289,8 @@
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblIncorrect;
+        private System.Windows.Forms.Panel pnlTitleBarRight;
+        private System.Windows.Forms.Panel pnlTitleBarLeft;
     }
 }

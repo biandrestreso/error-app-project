@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSolutionDialog = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDesc = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.pnlSolutionDialog.Location = new System.Drawing.Point(269, 270);
             this.pnlSolutionDialog.Name = "pnlSolutionDialog";
             this.pnlSolutionDialog.Size = new System.Drawing.Size(420, 197);
-            this.pnlSolutionDialog.TabIndex = 7;
+            this.pnlSolutionDialog.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -108,7 +109,7 @@
             this.txtDesc.Location = new System.Drawing.Point(19, 105);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(367, 20);
-            this.txtDesc.TabIndex = 3;
+            this.txtDesc.TabIndex = 0;
             // 
             // lblSolutionDesc
             // 
@@ -140,7 +141,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(311, 159);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 0;
+            this.btnSubmit.TabIndex = 1;
             this.btnSubmit.Text = "Update";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -152,7 +153,7 @@
             this.pnlButtons.Location = new System.Drawing.Point(19, 9);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(305, 60);
-            this.pnlButtons.TabIndex = 8;
+            this.pnlButtons.TabIndex = 1;
             // 
             // pnlDelete
             // 
@@ -172,7 +173,7 @@
             this.btnDelete.Location = new System.Drawing.Point(15, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 38);
-            this.btnDelete.TabIndex = 4;
+            this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete Solution";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -195,7 +196,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(15, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 38);
-            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Update Solution";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -207,7 +208,16 @@
             this.dgvSolution.AllowUserToResizeColumns = false;
             this.dgvSolution.AllowUserToResizeRows = false;
             this.dgvSolution.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvSolution.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSolution.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSolution.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSolution.Location = new System.Drawing.Point(19, 156);
             this.dgvSolution.Name = "dgvSolution";
             this.dgvSolution.ReadOnly = true;
@@ -227,7 +237,7 @@
             this.txtSearchSolution.Location = new System.Drawing.Point(723, 47);
             this.txtSearchSolution.Name = "txtSearchSolution";
             this.txtSearchSolution.Size = new System.Drawing.Size(210, 20);
-            this.txtSearchSolution.TabIndex = 10;
+            this.txtSearchSolution.TabIndex = 3;
             this.txtSearchSolution.TextChanged += new System.EventHandler(this.txtSearchSolution_TextChanged);
             // 
             // txtSearchError
@@ -235,7 +245,7 @@
             this.txtSearchError.Location = new System.Drawing.Point(723, 21);
             this.txtSearchError.Name = "txtSearchError";
             this.txtSearchError.Size = new System.Drawing.Size(210, 20);
-            this.txtSearchError.TabIndex = 11;
+            this.txtSearchError.TabIndex = 2;
             this.txtSearchError.TextChanged += new System.EventHandler(this.txtSearchError_TextChanged);
             // 
             // lblSearchSolution
@@ -265,7 +275,7 @@
             this.cmbModule.Location = new System.Drawing.Point(723, 73);
             this.cmbModule.Name = "cmbModule";
             this.cmbModule.Size = new System.Drawing.Size(210, 21);
-            this.cmbModule.TabIndex = 13;
+            this.cmbModule.TabIndex = 4;
             this.cmbModule.SelectedIndexChanged += new System.EventHandler(this.cmbModule_SelectedIndexChanged);
             // 
             // lblModule
@@ -316,7 +326,7 @@
             this.btnReset.Location = new System.Drawing.Point(592, 126);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(106, 23);
-            this.btnReset.TabIndex = 19;
+            this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset Filter";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -332,7 +342,7 @@
             this.btnFilterDate.Location = new System.Drawing.Point(704, 126);
             this.btnFilterDate.Name = "btnFilterDate";
             this.btnFilterDate.Size = new System.Drawing.Size(106, 23);
-            this.btnFilterDate.TabIndex = 17;
+            this.btnFilterDate.TabIndex = 6;
             this.btnFilterDate.Text = "Filter Date";
             this.btnFilterDate.UseVisualStyleBackColor = false;
             this.btnFilterDate.Click += new System.EventHandler(this.btnFilterDate_Click);

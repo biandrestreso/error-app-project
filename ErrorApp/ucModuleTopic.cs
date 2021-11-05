@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using DAL;
 using BLL;
 
@@ -31,16 +32,28 @@ namespace ErrorApp
             setColumnWidth();
         }
 
-        public void resetUC()
+        public void resetUC() //Reset entire usercontrol
         {
             pnlModuleTopic.Hide();
             pnlModuleDialog.Hide();
             pnlModuleTopicDialog.Hide();
             pnlUpdate.Hide();
             pnlDelete.Hide();
+            pnlUpdateModuleTopic.Hide();
+            pnlDeleteModuleTopic.Hide();
+
+            btnAddModule.Click += btnAddModule_Click;
+            btnAddTopic.Click += btnAddTopic_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdateModuleTopic.Click += btnUpdateModuleTopic_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnDeleteModuleTopic.Click += btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click += btnAddTopicModule_Click;
+            btnModuleTopic.Click += btnModuleTopic_Click;
+            btnBack.Click += btnBack_Click;
         }
 
-        public void refresh()
+        public void refresh() //Refresh dgv and cmb's
         {
             dgvTopic.DataSource = bll.GetTopic();
             dgvModule.DataSource = bll.GetModule();
@@ -59,7 +72,7 @@ namespace ErrorApp
             cmbTopic.DisplayMember = "Topic";
         }
 
-        private void setColumnWidth()
+        private void setColumnWidth() //Set column width after databinding
         {
             dgvModule.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvModule.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -69,20 +82,27 @@ namespace ErrorApp
             dgvModuleTopic.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) //Run sql queries and validate input
         {
             if (isModule)
             {
-                switch (isUpdate)
+                if (string.IsNullOrWhiteSpace(txtDesc.Text) || (!Regex.IsMatch(txtDesc.Text, @"^[A-Za-z]{3,4}\d{4}$")))
+                    errorModule.SetError(txtDesc, "Please enter a valid Module Code (3 to 4 letters and 4 numbers");
+                else
                 {
-                    case true:
-                        Module updateModule = new Module(int.Parse(dgvModule.SelectedRows[0].Cells["Module ID"].Value.ToString()), txtDesc.Text, int.Parse(cmbYear.SelectedValue.ToString()));
-                        bll.UpdateModule(updateModule);
-                        break;
-                    case false:
-                        Module insertModule = new Module(txtDesc.Text, int.Parse(cmbYear.SelectedValue.ToString()));
-                        bll.InsertModule(insertModule);
-                        break;
+                    errorModule.SetError(txtDesc, "");
+
+                    switch (isUpdate)
+                    {
+                        case true:
+                            Module updateModule = new Module(int.Parse(dgvModule.SelectedRows[0].Cells["Module ID"].Value.ToString()), txtDesc.Text, int.Parse(cmbYear.SelectedValue.ToString()));
+                            bll.UpdateModule(updateModule);
+                            break;
+                        case false:
+                            Module insertModule = new Module(txtDesc.Text, int.Parse(cmbYear.SelectedValue.ToString()));
+                            bll.InsertModule(insertModule);
+                            break;
+                    }
                 }
             }
             else if (!isModule)
@@ -100,11 +120,21 @@ namespace ErrorApp
                 }
             }
 
+            btnAddModule.Click += btnAddModule_Click;
+            btnAddTopic.Click += btnAddTopic_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdateModuleTopic.Click += btnUpdateModuleTopic_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnDeleteModuleTopic.Click += btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click += btnAddTopicModule_Click;
+            btnModuleTopic.Click += btnModuleTopic_Click;
+            btnBack.Click += btnBack_Click;
+
             pnlModuleDialog.Hide();
             refresh();
         }
 
-        private void btnModuleTopic_Click(object sender, EventArgs e)
+        private void btnModuleTopic_Click(object sender, EventArgs e) //Open module topic combination panel
         {
             pnlModuleTopic.Show();
             pnlModuleTopic.BringToFront();
@@ -112,19 +142,29 @@ namespace ErrorApp
             refresh();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e) //Opens module and topic panel
         {
             pnlModuleTopic.Hide();
             refresh();
         }
 
-        private void btnAddModule_Click(object sender, EventArgs e)
+        private void btnAddModule_Click(object sender, EventArgs e) //Open add module dialog
         {
             isModule = true;
             isUpdate = false;
 
             pnlModuleDialog.Show();
             pnlModuleDialog.BringToFront();
+
+            btnAddModule.Click -= btnAddModule_Click;
+            btnAddTopic.Click -= btnAddTopic_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+            btnModuleTopic.Click -= btnModuleTopic_Click;
+            btnBack.Click -= btnBack_Click;
 
             lblYear.Show();
             cmbYear.Show();
@@ -140,13 +180,23 @@ namespace ErrorApp
             btnSubmit.Text = "Add";
         }
 
-        private void btnAddTopic_Click(object sender, EventArgs e)
+        private void btnAddTopic_Click(object sender, EventArgs e) //Opens add Topic dialog
         {
             isModule = false;
             isUpdate = false;
 
             pnlModuleDialog.Show();
             pnlModuleDialog.BringToFront();
+
+            btnAddModule.Click -= btnAddModule_Click;
+            btnAddTopic.Click -= btnAddTopic_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+            btnModuleTopic.Click -= btnModuleTopic_Click;
+            btnBack.Click -= btnBack_Click;
 
             lblYear.Hide();
             cmbYear.Hide();
@@ -159,7 +209,7 @@ namespace ErrorApp
             btnSubmit.Text = "Add";
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e) //Opens update dialog
         {
             if (dgvModule.SelectedRows.Count == 1)
             {
@@ -168,6 +218,16 @@ namespace ErrorApp
 
                 pnlModuleDialog.Show();
                 pnlModuleDialog.BringToFront();
+
+                btnAddModule.Click -= btnAddModule_Click;
+                btnAddTopic.Click -= btnAddTopic_Click;
+                btnUpdate.Click -= btnUpdate_Click;
+                btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+                btnDelete.Click -= btnDelete_Click;
+                btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+                btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+                btnModuleTopic.Click -= btnModuleTopic_Click;
+                btnBack.Click -= btnBack_Click;
 
                 lblYear.Show();
                 cmbYear.Show();
@@ -188,6 +248,16 @@ namespace ErrorApp
                 pnlModuleDialog.Show();
                 pnlModuleDialog.BringToFront();
 
+                btnAddModule.Click -= btnAddModule_Click;
+                btnAddTopic.Click -= btnAddTopic_Click;
+                btnUpdate.Click -= btnUpdate_Click;
+                btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+                btnDelete.Click -= btnDelete_Click;
+                btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+                btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+                btnModuleTopic.Click -= btnModuleTopic_Click;
+                btnBack.Click -= btnBack_Click;
+
                 lblYear.Hide();
                 cmbYear.Hide();
 
@@ -200,7 +270,7 @@ namespace ErrorApp
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e) //Deletes selected topics or modules
         {
             if (dgvModule.SelectedRows.Count > 0)
             {
@@ -222,7 +292,7 @@ namespace ErrorApp
             refresh();
         }
 
-        private void dgvModule_SelectionChanged(object sender, EventArgs e)
+        private void dgvModule_SelectionChanged(object sender, EventArgs e) //Shows buttons based on selection
         {
             if (dgvModule.SelectedRows.Count == 1)
             {
@@ -245,7 +315,7 @@ namespace ErrorApp
             }
         }
 
-        private void dgvTopic_SelectionChanged(object sender, EventArgs e)
+        private void dgvTopic_SelectionChanged(object sender, EventArgs e) //Shows buttons based on selection
         {
             if (dgvTopic.SelectedRows.Count == 1)
             {
@@ -268,37 +338,54 @@ namespace ErrorApp
             }
         }
 
-        private void dgvModule_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvModule_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) //Clear selection after databinding
         {
             dgvModule.ClearSelection();
         }
 
-        private void dgvTopic_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvTopic_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) //Clear selection after databinding
         {
             dgvTopic.ClearSelection();
         }
 
-        //ModuleTopicPanel
-
-        private void btnAddTopicModule_Click(object sender, EventArgs e)
+        private void btnAddTopicModule_Click(object sender, EventArgs e) //Opens add topic to module dialog
         {
             isUpdate = false;
 
             pnlModuleTopicDialog.Show();
             pnlModuleTopicDialog.BringToFront();
 
+            btnAddModule.Click -= btnAddModule_Click;
+            btnAddTopic.Click -= btnAddTopic_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+            btnModuleTopic.Click -= btnModuleTopic_Click;
+            btnBack.Click -= btnBack_Click;
+
             lblModuleTopicHeading.Text = "Add Topic to Module";
             lblModuleTopicDesc.Text = "Select topic to add to module";
             btnSubmitModuleTopic.Text = "Add";
-
         }
 
-        private void btnUpdateModuleTopic_Click(object sender, EventArgs e)
+        private void btnUpdateModuleTopic_Click(object sender, EventArgs e) //Opens update dialog for module and topic
         {
             isUpdate = true;
 
             pnlModuleTopicDialog.Show();
             pnlModuleTopicDialog.BringToFront();
+
+            btnAddModule.Click -= btnAddModule_Click;
+            btnAddTopic.Click -= btnAddTopic_Click;
+            btnUpdate.Click -= btnUpdate_Click;
+            btnUpdateModuleTopic.Click -= btnUpdateModuleTopic_Click;
+            btnDelete.Click -= btnDelete_Click;
+            btnDeleteModuleTopic.Click -= btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click -= btnAddTopicModule_Click;
+            btnModuleTopic.Click -= btnModuleTopic_Click;
+            btnBack.Click -= btnBack_Click;
 
             cmbModule.Enabled = false;
             cmbModule.SelectedIndex = cmbModule.FindString(dgvModuleTopic.SelectedRows[0].Cells["Module and Topic"].Value.ToString().Split(' ')[0]);
@@ -308,7 +395,7 @@ namespace ErrorApp
             btnSubmitModuleTopic.Text = "Update";
         }
 
-        private void btnDeleteModuleTopic_Click(object sender, EventArgs e)
+        private void btnDeleteModuleTopic_Click(object sender, EventArgs e) //Delete module and topic
         {
             isUpdate = false;
 
@@ -321,7 +408,7 @@ namespace ErrorApp
             refresh();
         }
 
-        private void btnSubmitModuleTopic_Click(object sender, EventArgs e)
+        private void btnSubmitModuleTopic_Click(object sender, EventArgs e) //Combine module and topic
         {
             switch (isUpdate)
             {
@@ -333,15 +420,36 @@ namespace ErrorApp
                     break;
             }
 
+            btnAddModule.Click += btnAddModule_Click;
+            btnAddTopic.Click += btnAddTopic_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdateModuleTopic.Click += btnUpdateModuleTopic_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnDeleteModuleTopic.Click += btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click += btnAddTopicModule_Click;
+            btnModuleTopic.Click += btnModuleTopic_Click;
+            btnBack.Click += btnBack_Click;
+
+            refresh();
             pnlModuleTopicDialog.Hide();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e) //Close module topic dialog
         {
             pnlModuleDialog.Hide();
+
+            btnAddModule.Click += btnAddModule_Click;
+            btnAddTopic.Click += btnAddTopic_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdateModuleTopic.Click += btnUpdateModuleTopic_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnDeleteModuleTopic.Click += btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click += btnAddTopicModule_Click;
+            btnModuleTopic.Click += btnModuleTopic_Click;
+            btnBack.Click += btnBack_Click;
         }
 
-        private void dgvModuleTopic_SelectionChanged(object sender, EventArgs e)
+        private void dgvModuleTopic_SelectionChanged_1(object sender, EventArgs e)
         {
             if (dgvModuleTopic.SelectedRows.Count == 1)
             {
@@ -363,6 +471,21 @@ namespace ErrorApp
         private void btnCloseModuleTopic_Click(object sender, EventArgs e)
         {
             pnlModuleTopicDialog.Hide();
+
+            btnAddModule.Click += btnAddModule_Click;
+            btnAddTopic.Click += btnAddTopic_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdateModuleTopic.Click += btnUpdateModuleTopic_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnDeleteModuleTopic.Click += btnDeleteModuleTopic_Click;
+            btnAddModuleTopic.Click += btnAddTopicModule_Click;
+            btnModuleTopic.Click += btnModuleTopic_Click;
+            btnBack.Click += btnBack_Click;
+        }
+
+        private void dgvModuleTopic_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) //Clear selection after databinding
+        {
+            dgvModuleTopic.ClearSelection();
         }
     }
 }

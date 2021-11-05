@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnError = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlButtons = new System.Windows.Forms.Panel();
@@ -84,7 +85,7 @@
             this.btnError.Location = new System.Drawing.Point(15, 12);
             this.btnError.Name = "btnError";
             this.btnError.Size = new System.Drawing.Size(106, 38);
-            this.btnError.TabIndex = 2;
+            this.btnError.TabIndex = 0;
             this.btnError.Text = "Insert Error";
             this.btnError.UseVisualStyleBackColor = false;
             this.btnError.Click += new System.EventHandler(this.btnError_Click);
@@ -98,7 +99,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(15, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 38);
-            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Update Error";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -111,7 +112,7 @@
             this.pnlButtons.Location = new System.Drawing.Point(19, 9);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(426, 60);
-            this.pnlButtons.TabIndex = 5;
+            this.pnlButtons.TabIndex = 0;
             // 
             // pnlDelete
             // 
@@ -131,7 +132,7 @@
             this.btnDelete.Location = new System.Drawing.Point(15, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 38);
-            this.btnDelete.TabIndex = 4;
+            this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete Error";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -205,7 +206,7 @@
             this.cmbTopic.Location = new System.Drawing.Point(196, 153);
             this.cmbTopic.Name = "cmbTopic";
             this.cmbTopic.Size = new System.Drawing.Size(190, 21);
-            this.cmbTopic.TabIndex = 7;
+            this.cmbTopic.TabIndex = 2;
             // 
             // lblLanguage
             // 
@@ -234,14 +235,14 @@
             this.cmbProgLang.Location = new System.Drawing.Point(196, 126);
             this.cmbProgLang.Name = "cmbProgLang";
             this.cmbProgLang.Size = new System.Drawing.Size(190, 21);
-            this.cmbProgLang.TabIndex = 4;
+            this.cmbProgLang.TabIndex = 1;
             // 
             // txtDesc
             // 
             this.txtDesc.Location = new System.Drawing.Point(21, 100);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(365, 20);
-            this.txtDesc.TabIndex = 3;
+            this.txtDesc.TabIndex = 0;
             // 
             // lblSubHeading
             // 
@@ -273,7 +274,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(311, 186);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 0;
+            this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Add";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -284,7 +285,16 @@
             this.dgvError.AllowUserToDeleteRows = false;
             this.dgvError.AllowUserToResizeRows = false;
             this.dgvError.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvError.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvError.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvError.Location = new System.Drawing.Point(19, 134);
             this.dgvError.Name = "dgvError";
             this.dgvError.ReadOnly = true;
@@ -301,7 +311,7 @@
             this.panel1.Location = new System.Drawing.Point(19, 68);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(155, 60);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 1;
             // 
             // pnlSolution
             // 
@@ -323,7 +333,7 @@
             this.btnSolution.Location = new System.Drawing.Point(16, 12);
             this.btnSolution.Name = "btnSolution";
             this.btnSolution.Size = new System.Drawing.Size(106, 38);
-            this.btnSolution.TabIndex = 2;
+            this.btnSolution.TabIndex = 0;
             this.btnSolution.Text = "Add Solution";
             this.btnSolution.UseVisualStyleBackColor = false;
             this.btnSolution.Click += new System.EventHandler(this.btnAddSolution_Click);
@@ -335,7 +345,7 @@
             this.cmbViewProgLang.Location = new System.Drawing.Point(725, 47);
             this.cmbViewProgLang.Name = "cmbViewProgLang";
             this.cmbViewProgLang.Size = new System.Drawing.Size(210, 21);
-            this.cmbViewProgLang.TabIndex = 7;
+            this.cmbViewProgLang.TabIndex = 5;
             this.cmbViewProgLang.SelectedIndexChanged += new System.EventHandler(this.cmbViewProgLang_SelectedIndexChanged);
             // 
             // txtSearch
@@ -343,7 +353,7 @@
             this.txtSearch.Location = new System.Drawing.Point(725, 21);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(210, 20);
-            this.txtSearch.TabIndex = 8;
+            this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // errorError
@@ -404,7 +414,7 @@
             this.btnReset.Location = new System.Drawing.Point(594, 100);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(106, 23);
-            this.btnReset.TabIndex = 13;
+            this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset Filter";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);

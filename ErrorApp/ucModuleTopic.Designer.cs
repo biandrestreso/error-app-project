@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvModule = new System.Windows.Forms.DataGridView();
             this.pnlModuleDialog = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -68,12 +69,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlBack = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
-            this.dgvModuleTopic = new System.Windows.Forms.DataGridView();
             this.dgvTopic = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnModuleTopic = new System.Windows.Forms.Button();
             this.errorModule = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dgvModuleTopic = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).BeginInit();
             this.pnlModuleDialog.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,11 +90,11 @@
             this.pnlAddModuleTopic.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlBack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModuleTopic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorModule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModuleTopic)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvModule
@@ -357,7 +358,7 @@
             this.btnCloseModuleTopic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseModuleTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseModuleTopic.ForeColor = System.Drawing.Color.White;
-            this.btnCloseModuleTopic.Location = new System.Drawing.Point(356, 0);
+            this.btnCloseModuleTopic.Location = new System.Drawing.Point(374, 0);
             this.btnCloseModuleTopic.Name = "btnCloseModuleTopic";
             this.btnCloseModuleTopic.Size = new System.Drawing.Size(46, 40);
             this.btnCloseModuleTopic.TabIndex = 10;
@@ -372,7 +373,7 @@
             this.cmbModule.Location = new System.Drawing.Point(196, 102);
             this.cmbModule.Name = "cmbModule";
             this.cmbModule.Size = new System.Drawing.Size(190, 21);
-            this.cmbModule.TabIndex = 9;
+            this.cmbModule.TabIndex = 0;
             // 
             // lblTopic
             // 
@@ -391,7 +392,7 @@
             this.cmbTopic.Location = new System.Drawing.Point(196, 128);
             this.cmbTopic.Name = "cmbTopic";
             this.cmbTopic.Size = new System.Drawing.Size(190, 21);
-            this.cmbTopic.TabIndex = 7;
+            this.cmbTopic.TabIndex = 1;
             // 
             // lblModule
             // 
@@ -433,7 +434,7 @@
             this.btnSubmitModuleTopic.Location = new System.Drawing.Point(311, 164);
             this.btnSubmitModuleTopic.Name = "btnSubmitModuleTopic";
             this.btnSubmitModuleTopic.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmitModuleTopic.TabIndex = 0;
+            this.btnSubmitModuleTopic.TabIndex = 2;
             this.btnSubmitModuleTopic.Text = "Add";
             this.btnSubmitModuleTopic.UseVisualStyleBackColor = false;
             this.btnSubmitModuleTopic.Click += new System.EventHandler(this.btnSubmitModuleTopic_Click);
@@ -446,7 +447,7 @@
             this.panel7.Location = new System.Drawing.Point(19, 9);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(426, 60);
-            this.panel7.TabIndex = 9;
+            this.panel7.TabIndex = 0;
             // 
             // pnlDeleteModuleTopic
             // 
@@ -455,7 +456,7 @@
             this.pnlDeleteModuleTopic.Location = new System.Drawing.Point(274, 0);
             this.pnlDeleteModuleTopic.Name = "pnlDeleteModuleTopic";
             this.pnlDeleteModuleTopic.Size = new System.Drawing.Size(137, 60);
-            this.pnlDeleteModuleTopic.TabIndex = 8;
+            this.pnlDeleteModuleTopic.TabIndex = 2;
             // 
             // btnDeleteModuleTopic
             // 
@@ -466,7 +467,7 @@
             this.btnDeleteModuleTopic.Location = new System.Drawing.Point(21, 12);
             this.btnDeleteModuleTopic.Name = "btnDeleteModuleTopic";
             this.btnDeleteModuleTopic.Size = new System.Drawing.Size(105, 38);
-            this.btnDeleteModuleTopic.TabIndex = 4;
+            this.btnDeleteModuleTopic.TabIndex = 0;
             this.btnDeleteModuleTopic.Text = "Delete";
             this.btnDeleteModuleTopic.UseVisualStyleBackColor = false;
             this.btnDeleteModuleTopic.Click += new System.EventHandler(this.btnDeleteModuleTopic_Click);
@@ -478,7 +479,7 @@
             this.pnlUpdateModuleTopic.Location = new System.Drawing.Point(137, 0);
             this.pnlUpdateModuleTopic.Name = "pnlUpdateModuleTopic";
             this.pnlUpdateModuleTopic.Size = new System.Drawing.Size(137, 60);
-            this.pnlUpdateModuleTopic.TabIndex = 7;
+            this.pnlUpdateModuleTopic.TabIndex = 1;
             // 
             // btnUpdateModuleTopic
             // 
@@ -489,7 +490,7 @@
             this.btnUpdateModuleTopic.Location = new System.Drawing.Point(15, 12);
             this.btnUpdateModuleTopic.Name = "btnUpdateModuleTopic";
             this.btnUpdateModuleTopic.Size = new System.Drawing.Size(105, 38);
-            this.btnUpdateModuleTopic.TabIndex = 3;
+            this.btnUpdateModuleTopic.TabIndex = 0;
             this.btnUpdateModuleTopic.Text = "Update";
             this.btnUpdateModuleTopic.UseVisualStyleBackColor = false;
             this.btnUpdateModuleTopic.Click += new System.EventHandler(this.btnUpdateModuleTopic_Click);
@@ -514,7 +515,7 @@
             this.btnAddModuleTopic.Location = new System.Drawing.Point(15, 12);
             this.btnAddModuleTopic.Name = "btnAddModuleTopic";
             this.btnAddModuleTopic.Size = new System.Drawing.Size(106, 38);
-            this.btnAddModuleTopic.TabIndex = 2;
+            this.btnAddModuleTopic.TabIndex = 0;
             this.btnAddModuleTopic.Text = "Add Topic to Module";
             this.btnAddModuleTopic.UseVisualStyleBackColor = false;
             this.btnAddModuleTopic.Click += new System.EventHandler(this.btnAddTopicModule_Click);
@@ -547,23 +548,10 @@
             this.btnBack.Location = new System.Drawing.Point(15, 12);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(106, 38);
-            this.btnBack.TabIndex = 2;
+            this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Go Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // dgvModuleTopic
-            // 
-            this.dgvModuleTopic.AllowUserToAddRows = false;
-            this.dgvModuleTopic.AllowUserToDeleteRows = false;
-            this.dgvModuleTopic.AllowUserToResizeRows = false;
-            this.dgvModuleTopic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvModuleTopic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModuleTopic.Location = new System.Drawing.Point(19, 134);
-            this.dgvModuleTopic.Name = "dgvModuleTopic";
-            this.dgvModuleTopic.Size = new System.Drawing.Size(916, 512);
-            this.dgvModuleTopic.TabIndex = 0;
-            this.dgvModuleTopic.SelectionChanged += new System.EventHandler(this.dgvModuleTopic_SelectionChanged);
             // 
             // dgvTopic
             // 
@@ -619,6 +607,31 @@
             // 
             this.errorModule.ContainerControl = this;
             // 
+            // dgvModuleTopic
+            // 
+            this.dgvModuleTopic.AllowUserToAddRows = false;
+            this.dgvModuleTopic.AllowUserToDeleteRows = false;
+            this.dgvModuleTopic.AllowUserToResizeRows = false;
+            this.dgvModuleTopic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvModuleTopic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvModuleTopic.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvModuleTopic.Location = new System.Drawing.Point(19, 134);
+            this.dgvModuleTopic.Name = "dgvModuleTopic";
+            this.dgvModuleTopic.ReadOnly = true;
+            this.dgvModuleTopic.RowHeadersVisible = false;
+            this.dgvModuleTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvModuleTopic.Size = new System.Drawing.Size(916, 512);
+            this.dgvModuleTopic.TabIndex = 11;
+            this.dgvModuleTopic.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvModuleTopic_DataBindingComplete);
+            this.dgvModuleTopic.SelectionChanged += new System.EventHandler(this.dgvModuleTopic_SelectionChanged_1);
+            // 
             // ucModuleTopic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,11 +663,11 @@
             this.pnlAddModuleTopic.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.pnlBack.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModuleTopic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorModule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModuleTopic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,7 +696,6 @@
         private System.Windows.Forms.Panel pnlInsertTopic;
         private System.Windows.Forms.Button btnAddTopic;
         private System.Windows.Forms.Panel pnlModuleTopic;
-        private System.Windows.Forms.DataGridView dgvModuleTopic;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel pnlBack;
         private System.Windows.Forms.Button btnBack;
@@ -705,5 +717,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCloseModuleTopic;
         private System.Windows.Forms.ErrorProvider errorModule;
+        private System.Windows.Forms.DataGridView dgvModuleTopic;
     }
 }

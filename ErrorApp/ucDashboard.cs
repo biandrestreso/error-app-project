@@ -30,7 +30,7 @@ namespace ErrorApp
             refresh();
         }
 
-        public void refresh()
+        public void refresh() //Refresh everything on usercontrol based on user logged in
         {
             switch (Convert.ToInt32(dtLogin.Rows[0]["RoleID"].ToString()))
             {
@@ -48,7 +48,6 @@ namespace ErrorApp
                     dgvDashboard.DataSource = bll.GetErrorByUser(userStudent);
                     break;
             }
-
             
             DataTable dt = bll.GetLeastAnswered();
             if (dt.Rows.Count > 0)
@@ -95,7 +94,7 @@ namespace ErrorApp
             setColumn();
         }
 
-        private void setColumn()
+        private void setColumn() //Set column width after data added
         {
             if (dgvDashboard.Rows.Count > 0)
             {

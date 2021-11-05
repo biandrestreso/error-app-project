@@ -52,11 +52,6 @@ namespace BLL
             return dal.GetYear();
         }
 
-        public DataTable GetModuleByYear(Module module)
-        {
-            return dal.GetModuleByYear(module);
-        }
-
         public DataTable GetTopicModule()
         {
             return dal.GetTopicModule();
@@ -195,6 +190,26 @@ namespace BLL
         public int DeleteUserError(Error error)
         {
             return dal.DeleteUserError(error);
+        }
+
+        public int SetErrorPending(SolutionError solutionError)
+        {
+            return dal.SetErrorPending(solutionError);
+        }
+
+        public DataTable GetLecturerByStudentError(User user)
+        {
+            return dal.GetLecturerByStudentError(user);
+        }
+
+        public DataTable GetLecturerSolutions(User user)
+        {
+            return dal.GetLecturerSolutions(user);
+        }
+
+        public int DeleteSolutionByLecturer(User user)
+        {
+            return dal.DeleteSolutionByLecturer(user);
         }
 
         public DataTable GetSolutionByUser(User user)

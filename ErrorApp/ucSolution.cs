@@ -32,7 +32,7 @@ namespace ErrorApp
             resetUC();
         }
 
-        public void refresh()
+        public void refresh() //Refresh dgv and cmb's
         {
             selectDone = false;
 
@@ -74,7 +74,19 @@ namespace ErrorApp
             setColumn();
         }
 
-        private void setColumn()
+        public void resetUC() //Reset entire usercontrol
+        {
+            pnlDelete.Hide();
+            pnlUpdate.Hide();
+            pnlSolutionDialog.Hide();
+
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
+
+            refresh();
+        }
+
+        private void setColumn() //Set column width after databinding
         {
             if (dgvSolution.Rows.Count > 0)
             {
@@ -83,18 +95,12 @@ namespace ErrorApp
             }
         }
 
-        public void resetUC()
-        {
-            pnlDelete.Hide();
-            pnlUpdate.Hide();
-
-            pnlSolutionDialog.Hide();
-            refresh();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e) //Close dialog menu
         {
             pnlSolutionDialog.Hide();
+
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -103,6 +109,9 @@ namespace ErrorApp
 
             pnlSolutionDialog.Show();
             pnlSolutionDialog.BringToFront();
+
+            btnUpdate.Click -= btnUpdate_Click;
+            btnDelete.Click -= btnDelete_Click;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -134,9 +143,12 @@ namespace ErrorApp
                 bll.UpdateSolution(solutionError);
 
                 pnlSolutionDialog.Hide();
+
+                btnUpdate.Click += btnUpdate_Click;
+                btnDelete.Click += btnDelete_Click;
+
+                refresh();
             }
-            
-            refresh();
         }
 
         private void dgvSolution_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

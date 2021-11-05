@@ -109,5 +109,10 @@ namespace ErrorApp
             this.Hide();
             dtLogin = null;
         }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

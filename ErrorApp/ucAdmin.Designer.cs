@@ -85,7 +85,7 @@
             this.pnlSideMenu.Location = new System.Drawing.Point(0, 149);
             this.pnlSideMenu.Name = "pnlSideMenu";
             this.pnlSideMenu.Size = new System.Drawing.Size(264, 516);
-            this.pnlSideMenu.TabIndex = 1;
+            this.pnlSideMenu.TabIndex = 0;
             // 
             // btnDelete
             // 
@@ -100,7 +100,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnDelete.Size = new System.Drawing.Size(264, 45);
-            this.btnDelete.TabIndex = 4;
+            this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete User";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -243,7 +243,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(239, 408);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Add";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -305,7 +305,7 @@
             this.cmbRole.Location = new System.Drawing.Point(173, 189);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(141, 21);
-            this.cmbRole.TabIndex = 6;
+            this.cmbRole.TabIndex = 4;
             this.cmbRole.SelectedIndexChanged += new System.EventHandler(this.cmbRole_SelectedIndexChanged);
             // 
             // txtPassword
@@ -313,28 +313,28 @@
             this.txtPassword.Location = new System.Drawing.Point(173, 163);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(141, 20);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 3;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(173, 137);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 2;
             // 
             // txtSurname
             // 
             this.txtSurname.Location = new System.Drawing.Point(173, 111);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(141, 20);
-            this.txtSurname.TabIndex = 5;
+            this.txtSurname.TabIndex = 1;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(173, 85);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(141, 20);
-            this.txtName.TabIndex = 5;
+            this.txtName.TabIndex = 0;
             // 
             // lblAdminDetails
             // 

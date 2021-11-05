@@ -81,7 +81,7 @@
             this.btnAdmin.Location = new System.Drawing.Point(0, 300);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(170, 50);
-            this.btnAdmin.TabIndex = 15;
+            this.btnAdmin.TabIndex = 4;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
@@ -99,7 +99,7 @@
             this.btnModuleTopic.Location = new System.Drawing.Point(0, 250);
             this.btnModuleTopic.Name = "btnModuleTopic";
             this.btnModuleTopic.Size = new System.Drawing.Size(170, 50);
-            this.btnModuleTopic.TabIndex = 13;
+            this.btnModuleTopic.TabIndex = 3;
             this.btnModuleTopic.Text = "Module && Topic";
             this.btnModuleTopic.UseVisualStyleBackColor = false;
             this.btnModuleTopic.Click += new System.EventHandler(this.btnModuleTopic_Click);
@@ -117,7 +117,7 @@
             this.btnSolution.Location = new System.Drawing.Point(0, 200);
             this.btnSolution.Name = "btnSolution";
             this.btnSolution.Size = new System.Drawing.Size(170, 50);
-            this.btnSolution.TabIndex = 11;
+            this.btnSolution.TabIndex = 2;
             this.btnSolution.Text = "Solutions";
             this.btnSolution.UseVisualStyleBackColor = false;
             this.btnSolution.Click += new System.EventHandler(this.btnSolution_Click);
@@ -135,7 +135,7 @@
             this.btnError.Location = new System.Drawing.Point(0, 150);
             this.btnError.Name = "btnError";
             this.btnError.Size = new System.Drawing.Size(170, 50);
-            this.btnError.TabIndex = 10;
+            this.btnError.TabIndex = 1;
             this.btnError.Text = "Errors";
             this.btnError.UseVisualStyleBackColor = false;
             this.btnError.Click += new System.EventHandler(this.btnError_Click);
@@ -153,7 +153,7 @@
             this.btnDashboard.Location = new System.Drawing.Point(0, 100);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(170, 50);
-            this.btnDashboard.TabIndex = 9;
+            this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
@@ -171,7 +171,7 @@
             this.btnSignOut.Location = new System.Drawing.Point(0, 655);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(170, 50);
-            this.btnSignOut.TabIndex = 8;
+            this.btnSignOut.TabIndex = 5;
             this.btnSignOut.Text = "Sign Out";
             this.btnSignOut.UseVisualStyleBackColor = false;
             this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
@@ -191,7 +191,7 @@
             // lblRole
             // 
             this.lblRole.ForeColor = System.Drawing.Color.White;
-            this.lblRole.Location = new System.Drawing.Point(7, 74);
+            this.lblRole.Location = new System.Drawing.Point(6, 74);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(158, 13);
             this.lblRole.TabIndex = 1;
@@ -245,6 +245,7 @@
             this.btnMinimize.Text = "__";
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnClose
             // 
@@ -301,7 +302,7 @@
             this.ucDashboard.Location = new System.Drawing.Point(170, 40);
             this.ucDashboard.Name = "ucDashboard";
             this.ucDashboard.Size = new System.Drawing.Size(958, 665);
-            this.ucDashboard.TabIndex = 6;
+            this.ucDashboard.TabIndex = 1;
             // 
             // frmMenu
             // 
