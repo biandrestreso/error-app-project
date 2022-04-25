@@ -25,7 +25,7 @@ namespace DAL
             ErrorDate = errorDate;
             StudentID = studentID;
             ProgLangID = progLangID;
-            ModuleTopicID = moduleTopicID;
+            //ModuleTopicID = moduleTopicID;
         }
 
         public Error(int errorID, string errorDesc, int progLangID, int moduleTopicID)
